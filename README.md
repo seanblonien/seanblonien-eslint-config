@@ -105,15 +105,50 @@ pnpm -w lint
 # Test all packages
 pnpm -w test
 
-# Create a changeset
-pnpm changeset
-
-# Version packages
-pnpm version-packages
-
-# Publish to npm
+# Publish to npm (uses semantic-release)
 pnpm release
 ```
+
+## Versioning & Releases
+
+This project uses [semantic-release](https://github.com/semantic-release/semantic-release) with [multi-semantic-release](https://github.com/dhoulb/multi-semantic-release) for automated versioning and publishing.
+
+### Commit Message Format
+
+Follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+- `feat:` - New features (triggers minor version bump)
+- `fix:` - Bug fixes (triggers patch version bump)
+- `perf:` - Performance improvements (triggers patch version bump)
+- `docs:` - Documentation changes (triggers patch version bump)
+- `refactor:` - Code refactoring (triggers patch version bump)
+- `test:` - Test changes (no release)
+- `build:` - Build system changes (no release)
+- `ci:` - CI configuration changes (no release)
+- `chore:` - Other changes (no release)
+
+**Breaking changes:** Add `!` after the type or include `BREAKING CHANGE:` in the commit footer to trigger a major version bump.
+
+Examples:
+```bash
+feat: add new rule for import sorting
+fix: correct TypeScript type definitions
+feat!: remove deprecated configuration options
+```
+
+### Release Process
+
+Releases are fully automated via GitHub Actions:
+
+1. **Push to main** with conventional commits
+2. **GitHub Actions** runs `multi-semantic-release`
+3. **Versions are bumped** automatically based on commit types
+4. **Changelogs are generated** for each package
+5. **Packages are published** to npm
+6. **Git tags are created** (e.g., `@seanblonien/eslint-config-base@1.2.3`)
+7. **GitHub releases are created** with release notes
+
+No manual versioning or changelog management required!
 
 ## License
 

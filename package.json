@@ -14,20 +14,26 @@
   "type": "module",
   "scripts": {
     "build": "turbo build",
-    "changeset": "changeset",
     "clean": "turbo clean && rm -rf node_modules",
     "clean:all": "find . -type d \\( -name dist -o -name .turbo \\) -prune -exec rm -rf {} +",
     "lint": "turbo lint",
-    "release": "pnpm build && changeset publish",
+    "release": "pnpm build && multi-semantic-release",
     "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
     "test": "turbo test",
-    "validate": "turbo lint && turbo build && turbo test",
-    "version-packages": "changeset version"
+    "validate": "turbo lint && turbo build && turbo test"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.7",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.2",
+    "@semantic-release/npm": "^13.1.2",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
     "eslint": "^9.39.1",
     "jiti": "^2.6.1",
+    "multi-semantic-release": "^3.1.0",
+    "semantic-release": "^25.0.2",
     "turbo": "^2.6.1",
     "typescript": "^5.9.3"
   },
