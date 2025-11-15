@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": ".",
+    "jsx": "react"
+  },
+  "include": [
+    "src",
+    "vitest.config.ts",
+    "tsup.config.ts",
+    "eslint.config.ts"
+  ]
+}

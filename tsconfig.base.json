@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // Language and Environment
+    "target": "ES2023",
+    "lib": [
+      "ES2023"
+    ],
+    "jsx": "preserve",
+    "experimentalDecorators": false,
+    "emitDecoratorMetadata": false,
+    // Modules
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "resolvePackageJsonExports": true,
+    "resolvePackageJsonImports": true,
+    "allowImportingTsExtensions": false,
+    "allowArbitraryExtensions": false,
+    // Interop Constraints
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "isolatedDeclarations": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "preserveSymlinks": false,
+    "forceConsistentCasingInFileNames": true,
+    // JS Checks
+    "allowJs": true,
+    "maxNodeModuleJsDepth": 0,
+    // Type Checking - Strictest Settings
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": false, // in favor of eslint rule
+    "noUnusedParameters": false, // in favor of eslint rule
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": false, // in favor of eslint rule
+    "noPropertyAccessFromIndexSignature": false, // in favor of eslint rule
+    "noImplicitOverride": true,
+    "noErrorTruncation": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    // Completeness
+    "skipDefaultLibCheck": false,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    ".turbo"
+  ]
+}

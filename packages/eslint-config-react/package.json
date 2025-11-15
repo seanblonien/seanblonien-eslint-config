@@ -1,0 +1,62 @@
+{
+  "name": "@seanblonien/eslint-config-react",
+  "version": "0.0.1",
+  "description": "Sean Blonien's opinionated ESLint config for TypeScript & React projects",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "flat-config",
+    "react",
+    "jsx",
+    "typescript"
+  ],
+  "homepage": "https://github.com/seanblonien/seanblonien-eslint-config/tree/main/packages/eslint-config-react#readme",
+  "bugs": {
+    "url": "https://github.com/seanblonien/seanblonien-eslint-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seanblonien/seanblonien-eslint-config"
+  },
+  "license": "MIT",
+  "author": "Sean Blonien",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "lint": "eslint . --fix",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@seanblonien/eslint-config-base": "workspace:*",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-compiler": "19.1.0-rc.2",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-hooks-addons": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "eslint": "^9.39.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.9"
+  },
+  "peerDependencies": {
+    "eslint": ">= 9"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
