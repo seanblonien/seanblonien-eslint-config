@@ -107,7 +107,7 @@
         "changelogFile": "CHANGELOG.md"
       }
     ],
-    "@semantic-release/npm",
+    "@anolilab/semantic-release-pnpm",
     [
       "@semantic-release/git",
       {
@@ -122,4 +122,3 @@
     "@semantic-release/github"
   ]
 }
-
