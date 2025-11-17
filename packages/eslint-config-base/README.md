@@ -2,20 +2,15 @@
 
 ![npm](https://img.shields.io/npm/v/@seanblonien/eslint-config-base)
 ![license](https://img.shields.io/npm/l/@seanblonien/eslint-config-base)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-Base ESLint flat config for modern JavaScript/TypeScript projects.
-
-## Features
-
-- ✅ ESLint recommended rules
-- 🎯 TypeScript support (no project-aware rules for speed)
-- 📦 Import plugin with automatic sorting and organization
-- 🚫 Unused variable detection with `_` prefix ignore pattern
-- ⚡ Fast - optimized for performance
+Sean Blonien's opinionated ESLint config for TypeScript projects
 
 ## Installation
 
-```bash
+Since this uses eslint v9, the only peer dependency is `eslint` itself, all other dependencies are included in the package.
+
+```sh
 # pnpm
 pnpm add -D eslint @seanblonien/eslint-config-base
 
@@ -26,19 +21,9 @@ npm install -D eslint @seanblonien/eslint-config-base
 yarn add -D eslint @seanblonien/eslint-config-base
 ```
 
-## Peer Dependencies
-
-This config requires the following peer dependencies (automatically installed):
-
-- `eslint` >= 9.0.0
-- `@eslint/js` >= 9.0.0
-- `typescript-eslint` >= 8.0.0
-- `eslint-plugin-import` >= 2.31.0
-- `typescript` >= 5.0.0
-
 ## Usage
 
-```js
+```ts
 // eslint.config.ts
 import baseConfig from '@seanblonien/eslint-config-base';
 
@@ -46,11 +31,21 @@ export default [
   ...baseConfig,
   {
     rules: {
-      // Rule overrides
+      'no-console': 'warn',
     },
+  },
+  {
+    ignores: ['dist/**', 'build/**'],
   },
 ];
 ```
+
+## What's Included
+
+- **ESLint recommended rules** - Core ESLint best practices
+- **TypeScript support** - Full TypeScript linting without project-aware rules for faster performance
+- **Import plugin** - Automatic import sorting and organization
+- **Unused variable detection** - Catches unused variables while allowing `_` prefix for intentionally unused variables
 
 ## Requirements
 

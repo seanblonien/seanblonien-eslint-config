@@ -1,8 +1,9 @@
 # seanblonien-eslint-config
 
-[![CI](https://github.com/seanblonien/seanblonien-eslint-config/actions/workflows/ci.yml/badge.svg)](https://github.com/seanblonien/seanblonien-eslint-config/actions/workflows/ci.yml)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Composable ESLint flat configs for TypeScript and React projects.
+Monorepo for Sean Blonien's opinionated ESLint configurations for TypeScript & React projects.
 
 ## Features
 
@@ -14,50 +15,35 @@ Composable ESLint flat configs for TypeScript and React projects.
 
 ## Packages
 
-This monorepo contains two standalone, composable ESLint configuration packages:
+This monorepo contains two composable ESLint configuration packages:
 
-| Package | Version | Description |
-|---------|---------|-------------|
-| [@seanblonien/eslint-config-base](./packages/eslint-config-base) | ![npm](https://img.shields.io/npm/v/@seanblonien/eslint-config-base) | Base TypeScript/JavaScript rules |
-| [@seanblonien/eslint-config-react](./packages/eslint-config-react) | ![npm](https://img.shields.io/npm/v/@seanblonien/eslint-config-react) | React + Hooks + Web Accessibility |
+| Package | Version | CI Status | Downloads | Description |
+|---------|---------|-----------|-----------|-------------|
+| [@seanblonien/eslint-config-base](./packages/eslint-config-base) | ![npm](https://img.shields.io/npm/v/@seanblonien/eslint-config-base) | [![CI](https://github.com/seanblonien/seanblonien-eslint-config/actions/workflows/ci.yml/badge.svg)](https://github.com/seanblonien/seanblonien-eslint-config/actions/workflows/ci.yml) | ![npm downloads](https://img.shields.io/npm/dm/@seanblonien/eslint-config-base) | Base TypeScript/JavaScript rules |
+| [@seanblonien/eslint-config-react](./packages/eslint-config-react) | ![npm](https://img.shields.io/npm/v/@seanblonien/eslint-config-react) | [![CI](https://github.com/seanblonien/seanblonien-eslint-config/actions/workflows/ci.yml/badge.svg)](https://github.com/seanblonien/seanblonien-eslint-config/actions/workflows/ci.yml) | ![npm downloads](https://img.shields.io/npm/dm/@seanblonien/eslint-config-react) | **Extends base** + React + Hooks + a11y |
 
-## Installation
+**Note:** The `@seanblonien/eslint-config-react` package extends and includes all of the base configurations and rules from the `@seanblonien/eslint-config-base` package. It does not duplicate the base config rules, so you only need to install one package based on your project type.
+
+Click on the package names above to view detailed documentation for each package.
+
+## Quick Start
+
+### Installation
 
 Choose the package that matches your project type:
 
 ```sh
 # JavaScript/TypeScript Projects
-pnpm add -D eslint @seanblonien/eslint-config-base
+npm install -D eslint @seanblonien/eslint-config-base
 
-# React Projects
-pnpm add -D eslint @seanblonien/eslint-config-react
+# React Projects (includes all base config rules)
+npm install -D eslint @seanblonien/eslint-config-react
 ```
 
+### Usage with Custom Rules
 
-## Usage Examples
-
-### TypeScript Project
-
-```js
-// eslint.config.js
-import baseConfig from '@seanblonien/eslint-config-base';
-
-export default [...baseConfig];
-```
-
-### React Project
-
-```js
-// eslint.config.js
-import reactConfig from '@seanblonien/eslint-config-react';
-
-export default [...reactConfig];
-```
-
-### With Custom Rules
-
-```js
-// eslint.config.js
+```ts
+// eslint.config.ts
 import reactConfig from '@seanblonien/eslint-config-react';
 
 export default [
@@ -73,82 +59,11 @@ export default [
 ];
 ```
 
-## What's Included
+For more detailed usage examples and configuration options, see the individual package READMEs linked above.
 
-### Base Config
-- ESLint recommended rules
-- TypeScript support (no project-aware rules for speed)
-- Import plugin with automatic sorting
-- Unused variable detection with `_` prefix ignore
+## Contributing
 
-### React Config
-- All base config rules
-- React recommended rules
-- React Hooks rules
-- JSX Accessibility (a11y) rules
-- Automatic React version detection
-
-## Development
-
-This is a Turborepo monorepo managed with pnpm.
-
-```bash
-# Install dependencies
-pnpm install
-
-# Build all packages
-pnpm -w build
-
-# Lint all packages
-pnpm -w lint
-
-# Test all packages
-pnpm -w test
-
-# Publish to npm (uses semantic-release)
-pnpm release
-```
-
-## Versioning & Releases
-
-This project uses [semantic-release](https://github.com/semantic-release/semantic-release) with [multi-semantic-release](https://github.com/dhoulb/multi-semantic-release) for automated versioning and publishing.
-
-### Commit Message Format
-
-Follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
-
-- `feat:` - New features (triggers minor version bump)
-- `fix:` - Bug fixes (triggers patch version bump)
-- `perf:` - Performance improvements (triggers patch version bump)
-- `docs:` - Documentation changes (triggers patch version bump)
-- `refactor:` - Code refactoring (triggers patch version bump)
-- `test:` - Test changes (no release)
-- `build:` - Build system changes (no release)
-- `ci:` - CI configuration changes (no release)
-- `chore:` - Other changes (no release)
-
-**Breaking changes:** Add `!` after the type or include `BREAKING CHANGE:` in the commit footer to trigger a major version bump.
-
-Examples:
-```bash
-feat: add new rule for import sorting
-fix: correct TypeScript type definitions
-feat!: remove deprecated configuration options
-```
-
-### Release Process
-
-Releases are fully automated via GitHub Actions:
-
-1. **Push to main** with conventional commits
-2. **GitHub Actions** runs `multi-semantic-release`
-3. **Versions are bumped** automatically based on commit types
-4. **Changelogs are generated** for each package
-5. **Packages are published** to npm
-6. **Git tags are created** (e.g., `@seanblonien/eslint-config-base@1.2.3`)
-7. **GitHub releases are created** with release notes
-
-No manual versioning or changelog management required!
+The [Contributing Guide](./CONTRIBUTING.md) for development setup, workflow, and release process information.
 
 ## License
 

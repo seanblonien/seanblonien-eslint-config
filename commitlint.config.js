@@ -8,14 +8,9 @@ export default {
         'feat',
         'fix',
         'docs',
-        'style',
-        'refactor',
-        'perf',
         'test',
-        'build',
         'ci',
         'chore',
-        'revert',
       ],
     ],
     'scope-case': [2, 'always', 'lower-case'],
@@ -25,4 +20,3 @@ export default {
     'header-max-length': [2, 'always', 100],
   },
 };
-
