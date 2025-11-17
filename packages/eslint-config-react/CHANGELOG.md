@@ -1,3 +1,18 @@
+## @seanblonien/eslint-config-react [1.0.2](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.1...@seanblonien/eslint-config-react@1.0.2) (2025-11-17)
+
+
+### Bug Fixes
+
+* Updated doc link, added TS disables, updated boolean prefix ([#7](https://github.com/seanblonien/seanblonien-eslint-config/issues/7)) ([1a1172e](https://github.com/seanblonien/seanblonien-eslint-config/commit/1a1172e5351b2e18d5041f0bcc1fffb64aa45e52))
+
+
+
+
+
+### Dependencies
+
+* **@seanblonien/eslint-config-base:** upgraded to 1.0.2
+
 ## @seanblonien/eslint-config-react [1.0.1](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.0...@seanblonien/eslint-config-react@1.0.1) (2025-11-17)
 
 
