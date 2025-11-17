@@ -1,3 +1,18 @@
+## @seanblonien/eslint-config-react [1.0.3](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.2...@seanblonien/eslint-config-react@1.0.3) (2025-11-17)
+
+
+### Bug Fixes
+
+* Updated boolean prefixes, var name convention, added next.js config ([#8](https://github.com/seanblonien/seanblonien-eslint-config/issues/8)) ([b33a7f5](https://github.com/seanblonien/seanblonien-eslint-config/commit/b33a7f5edb23f78e863b2f143668e5c6910b78fa))
+
+
+
+
+
+### Dependencies
+
+* **@seanblonien/eslint-config-base:** upgraded to 1.0.3
+
 ## @seanblonien/eslint-config-react [1.0.2](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.1...@seanblonien/eslint-config-react@1.0.2) (2025-11-17)
 
 
