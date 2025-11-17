@@ -431,6 +431,9 @@ const config: Linter.Config[] = [
   },
 ];
 
+// Export shared utilities for use in other packages
+export { booleanNameConvention, booleanNameExceptions, booleanNamePrefixes } from './boolean-naming';
+
 export default config;
 
 /* eslint-enable @typescript-eslint/no-magic-numbers  */
