@@ -4,7 +4,7 @@
 ![license](https://img.shields.io/npm/l/@seanblonien/eslint-config-react)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-Sean Blonien's opinionated ESLint config for TypeScript & React projects. **This package extends [@seanblonien/eslint-config-base](../eslint-config-base)** and includes all base TypeScript/JavaScript rules plus React-specific configurations.
+Sean Blonien's opinionated ESLint config for TypeScript & React projects. **This package extends [@seanblonien/eslint-config-base](https://github.com/seanblonien/seanblonien-eslint-config/tree/main/packages/eslint-config-base)** and includes all base TypeScript/JavaScript rules *plus* React-specific configurations.
 
 ## Installation
 
@@ -44,7 +44,7 @@ export default [
 
 ## What's Included
 
-This config extends [@seanblonien/eslint-config-base](../eslint-config-base) and builds on top of the following additional direct dependencies:
+This config extends [@seanblonien/eslint-config-base](https://github.com/seanblonien/seanblonien-eslint-config/tree/main/packages/eslint-config-base) and builds on top of the following additional direct dependencies:
 
 - **[@seanblonien/eslint-config-base](https://www.npmjs.com/package/@seanblonien/eslint-config-base)** - Base TypeScript/JavaScript ESLint configuration (includes all base rules and plugins)
 - **[eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)** - React-specific linting rules with automatic version detection

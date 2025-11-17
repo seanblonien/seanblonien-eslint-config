@@ -40,6 +40,21 @@ const config: Linter.Config[] = [
       },
     },
     rules: {
+      // TS rule overrides for JSX files
+      '@typescript-eslint/no-magic-numbers': 'off',
+      '@typescript-eslint/restrict-template-expressions': 'off',
+      '@typescript-eslint/no-use-before-define': 'off',
+      'unicorn/filename-case': [
+        'warn',
+        {
+          cases: { pascalCase: true, kebabCase: true },
+        },
+      ],
+      'padding-line-between-statements': [
+        'warn',
+        { blankLine: 'always', prev: '*', next: 'return' },
+      ],
+
       // --- React Rules ---
       // General React rules
       'react/style-prop-object': 'off', // Keep off for RN

@@ -7,6 +7,7 @@ const concatElementsByRegexUnion = (elements: string[]) =>
 // Prefixes allowed at the start of a boolean variable/parameter name
 export const booleanNamePrefixes = [
   'is',
+  'as',
   'are',
   'should',
   'has',
