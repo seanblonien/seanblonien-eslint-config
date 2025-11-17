@@ -198,39 +198,51 @@ const config: Linter.Config[] = [
       'camelcase': ['warn', { allow: ['^_', 'content_type', 'reply_to'] }],
       '@typescript-eslint/naming-convention': [
         'warn',
+        // Property naming rules
         {
           selector: 'property',
           format: ['camelCase', 'UPPER_CASE'],
           leadingUnderscore: 'allow',
           filter: {
-            regex:
-          String.raw`^_|[- /?:{}@%]|Provider|Mui|Comp|^item$|^condition$|^container$|^Container$|^\d+$`,
+            regex: String.raw`^_|[- /?:{}@%]|Provider|Comp|^item$|^condition$|^container$|^Container$|^\d+$`, // ignore properties with dashes/slashes/spaces
             match: false,
           },
         },
+        // Variable-like naming rules
         {
           selector: 'variableLike',
-          format: ['camelCase', 'UPPER_CASE'],
+          format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
           trailingUnderscore: 'allow',
-          filter: { regex: '^_|Comp|Container|Provider|Stack|Root', match: false },
         },
+        // Function variable naming rules
         {
           selector: 'variable',
           format: ['camelCase', 'PascalCase'],
           types: ['function'],
-          filter: { regex: '^_|Comp|Provider|Stack', match: false },
+          filter: {
+            regex: '^_|Comp|Provider|Stack|Wrapper|Root', // allowing for 'Component' parameter names
+            match: false,
+          },
         },
+        // Type naming rules
         {
           selector: 'typeLike',
           format: ['PascalCase'],
-          filter: { regex: '^_|_$', match: false },
+          filter: {
+            regex: '^_|_$',
+            match: false,
+          },
         },
+        // Boolean naming rules
         {
           selector: ['variable', 'property', 'parameter', 'typeProperty'],
           types: ['boolean'],
-          format: ['UPPER_CASE', 'PascalCase'],
+          format: ['UPPER_CASE', 'PascalCase'], // must be PascalCase because prefix is trimmed
           prefix: booleanNamePrefixes,
-          filter: { regex: booleanNameExceptions, match: false },
+          filter: {
+            regex: booleanNameExceptions,
+            match: false,
+          },
         },
       ],
 

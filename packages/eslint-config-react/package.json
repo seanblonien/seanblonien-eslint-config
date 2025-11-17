@@ -55,7 +55,13 @@
     "vitest": "^4.0.9"
   },
   "peerDependencies": {
-    "eslint": ">= 9"
+    "eslint": ">= 9",
+    "@next/eslint-plugin-next": ">= 15"
+  },
+  "peerDependenciesMeta": {
+    "@next/eslint-plugin-next": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"

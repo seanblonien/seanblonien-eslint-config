@@ -9,6 +9,7 @@ export const booleanNamePrefixes = [
   'is',
   'as',
   'are',
+  'was',
   'should',
   'has',
   'can',
@@ -27,6 +28,10 @@ export const booleanNamePrefixes = [
   'hide',
   'error',
   'override',
+  'need',
+  'must',
+  'require',
+  'want',
 ];
 // Regex for the rest of a boolean variable/parameter name (the part after the prefix)
 const booleanNameSuffixes = '[A-Z]([A-Za-z]?)+';

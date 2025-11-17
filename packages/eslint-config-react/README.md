@@ -8,22 +8,28 @@ Sean Blonien's opinionated ESLint config for TypeScript & React projects. **This
 
 ## Installation
 
-Since this uses eslint v9, the only peer dependency is `eslint` itself, all other dependencies are included in the package.
+This package provides two configurations: one for standard React projects and one for Next.js projects.
 
 **Note:** This package automatically includes `@seanblonien/eslint-config-base` as a dependency, so you don't need to install it separately.
-
 ```sh
 # pnpm
 pnpm add -D eslint @seanblonien/eslint-config-react
+pnpm add -D eslint @seanblonien/eslint-config-react @next/eslint-plugin-next # For Next.js projects only
 
 # npm
 npm install -D eslint @seanblonien/eslint-config-react
+npm install -D eslint @seanblonien/eslint-config-react @next/eslint-plugin-next # For Next.js projects only
 
 # yarn
 yarn add -D eslint @seanblonien/eslint-config-react
+yarn add -D eslint @seanblonien/eslint-config-react @next/eslint-plugin-next # For Next.js projects only
 ```
 
 ## Usage
+
+### Standard React Projects
+
+Use the default export for React projects without Next.js:
 
 ```ts
 // eslint.config.ts
@@ -33,11 +39,32 @@ export default [
   ...reactConfig,
   {
     rules: {
-      'react/jsx-curly-spacing': ['error', { when: 'always' }],
+      // Override rules as needed
     },
   },
   {
     ignores: ['dist/**', 'build/**'],
+  },
+];
+```
+
+### Next.js Projects
+
+Use the `configWithNext` named export for Next.js projects (includes Next.js recommended rules and Core Web Vitals):
+
+```ts
+// eslint.config.ts
+import { configWithNext } from '@seanblonien/eslint-config-react';
+
+export default [
+  ...configWithNext(),
+  {
+    rules: {
+      // Override rules as needed
+    },
+  },
+  {
+    ignores: ['dist/**', 'build/**', '.next/**'],
   },
 ];
 ```
@@ -52,6 +79,14 @@ This config extends [@seanblonien/eslint-config-base](https://github.com/seanblo
 - **[eslint-plugin-react-hooks-addons](https://www.npmjs.com/package/eslint-plugin-react-hooks-addons)** - Additional best practices for React Hooks
 - **[eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)** - Accessibility rules for JSX elements
 - **[eslint-plugin-react-compiler](https://www.npmjs.com/package/eslint-plugin-react-compiler)** - Linting support for the experimental React Compiler
+
+### Optional Next.js Support
+
+When using the `configWithNext` export, the following additional plugin is required:
+
+- **[@next/eslint-plugin-next](https://www.npmjs.com/package/@next/eslint-plugin-next)** - Next.js-specific linting rules including Core Web Vitals checks
+
+**Important:** When using `configWithNext`, you must **not** also add `@next/eslint-plugin-next` / `@next/next` in your own ESLint config (for example in `plugins` or other shared configs). This config already registers the plugin, and ESLint will error if a plugin with the same key is loaded twice.
 
 ## Requirements
 
