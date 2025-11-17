@@ -1,5 +1,5 @@
-// @ts-expect-error - no types available
-import baseConfig from '@seanblonien/eslint-config-base';
+// Import from source to avoid circular dependency during build
+import baseConfig from './packages/eslint-config-base/src/index';
 import type { Linter } from 'eslint';
 
 export default [
