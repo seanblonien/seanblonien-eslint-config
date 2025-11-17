@@ -131,6 +131,47 @@ const config: Linter.Config[] = [
   },
 ];
 
+/**
+ * React ESLint config with Next.js plugin support.
+ * Requires @next/eslint-plugin-next to be installed as a peer dependency.
+ *
+ * @example
+ * ```ts
+ * import { configWithNext } from '@seanblonien/eslint-config-react';
+ *
+ * export default [...configWithNext()];
+ * ```
+ */
+export const configWithNext = (): Linter.Config[] => {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports, unicorn/prefer-module -- optional peer dependency
+    const nextPlugin = require('@next/eslint-plugin-next') as {
+      configs: {
+        'core-web-vitals': Linter.Config;
+        'recommended': Linter.Config;
+      };
+    };
+
+    return [
+      ...config,
+      {
+        plugins: {
+          '@next/next': nextPlugin,
+        },
+        rules: {
+          ...nextPlugin.configs.recommended.rules,
+          ...nextPlugin.configs['core-web-vitals'].rules,
+        },
+      },
+    ];
+  } catch {
+    throw new Error(
+      '@next/eslint-plugin-next is required to use configWithNext. ' +
+      'Install it with: pnpm add -D @next/eslint-plugin-next',
+    );
+  }
+};
+
 export default config;
 
 /* eslint-enable @typescript-eslint/naming-convention */

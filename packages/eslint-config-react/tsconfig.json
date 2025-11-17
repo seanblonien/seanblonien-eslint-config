@@ -5,7 +5,8 @@
     "rootDir": ".",
     "jsx": "react",
     "types": [
-      "@types/react"
+      "@types/react",
+      "@types/node"
     ]
   },
   "include": [
