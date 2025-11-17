@@ -31,7 +31,9 @@ export default [
   ...baseConfig,
   {
     rules: {
-      'no-console': 'warn',
+      // Override rules from the base config as needed
+      'no-loops/no-loops': 'off', // Allow loops in this project
+      '@typescript-eslint/no-magic-numbers': 'off', // Allow magic numbers
     },
   },
   {
