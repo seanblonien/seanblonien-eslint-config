@@ -52,7 +52,6 @@ Follow the [Conventional Commits](https://www.conventionalcommits.org/) specific
 - `fix:` - Bug fixes (triggers patch version bump)
 - `docs:` - Documentation changes (triggers patch version bump)
 - `test:` - Test changes (no release)
-- `build:` - Build system changes (no release)
 - `ci:` - CI configuration changes (no release)
 - `chore:` - Other changes (no release)
 
