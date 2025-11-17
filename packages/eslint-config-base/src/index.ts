@@ -420,7 +420,19 @@ const config: Linter.Config[] = [
       ],
     },
   },
+
+  // Config files overrides
+  {
+    files: ['**/*.config.{ts,js,mjs,cjs}'],
+    rules: {
+      '@typescript-eslint/no-magic-numbers': 'off',
+      '@typescript-eslint/naming-convention': 'off',
+    },
+  },
 ];
+
+// Export shared utilities for use in other packages
+export { booleanNameConvention, booleanNameExceptions, booleanNamePrefixes } from './boolean-naming';
 
 export default config;
 

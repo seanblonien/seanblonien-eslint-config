@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention -- config file */
-import baseConfig from '@seanblonien/eslint-config-base';
+import baseConfig, { booleanNameConvention } from '@seanblonien/eslint-config-base';
 // @ts-expect-error - no types available
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
@@ -23,8 +23,11 @@ const config: Linter.Config[] = [
 
   // React plugin configuration
   {
-    files: ['**/*.jsx', '**/*.tsx'],
+    files: ['**/*.{tsx,jsx}'],
     languageOptions: {
+      globals: {
+        React: 'readonly',
+      },
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
@@ -37,21 +40,76 @@ const config: Linter.Config[] = [
       },
     },
     rules: {
-      // Custom React rules
-      'react/prop-types': 'off', // TypeScript handles this
+      // --- React Rules ---
+      // General React rules
+      'react/style-prop-object': 'off', // Keep off for RN
+      'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off', // Not needed with new JSX transform
-      'react/jsx-uses-react': 'off', // Not needed with new JSX transform
-      'react/jsx-curly-brace-presence': [
-        'error',
-        { props: 'never', children: 'never' },
-      ],
-      'react/self-closing-comp': 'error',
+      'react/no-multi-comp': ['error', { ignoreStateless: true }],
+      'react/no-array-index-key': 'warn',
+      'react/void-dom-elements-no-children': 'error',
+      'react/destructuring-assignment': ['warn', 'always'],
+      'react/boolean-prop-naming': ['warn', { rule: booleanNameConvention }],
+
+      // Component definition rules
+      'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
+      'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
+      'react/self-closing-comp': 'warn',
+
+      // JSX formatting rules
+      'react/jsx-curly-brace-presence': 'warn',
+      'react/jsx-closing-bracket-location': ['warn', 'line-aligned'],
+      'react/jsx-no-useless-fragment': ['warn', { allowExpressions: true }],
+      'react/jsx-first-prop-new-line': ['warn'],
+      'react/jsx-tag-spacing': ['warn', { beforeClosing: 'never' }],
+      'react/jsx-key': 'error',
+      'react/jsx-max-depth': ['error', { max: 6 }],
+      'react/jsx-no-comment-textnodes': 'warn',
       'react/jsx-boolean-value': ['error', 'never'],
-      'react/function-component-definition': [
+      'react/jsx-props-no-multi-spaces': 'error',
+
+      // JSX multiline formatting
+      '@stylistic/multiline-ternary': ['warn', 'always-multiline', { ignoreJSX: true }],
+      '@stylistic/jsx-wrap-multilines': [
+        'warn',
+        {
+          declaration: 'parens-new-line',
+          assignment: 'parens-new-line',
+          return: 'parens-new-line',
+          arrow: 'parens-new-line',
+          condition: 'ignore',
+          logical: 'ignore',
+          prop: 'ignore',
+        },
+      ],
+
+      // Props handling rules
+      'react/jsx-sort-props': ['warn', { shorthandFirst: true, callbacksLast: true, reservedFirst: true }],
+      'react/jsx-props-no-spreading': [
         'error',
         {
-          namedComponents: 'arrow-function',
-          unnamedComponents: 'arrow-function',
+          exceptions: [
+            'ScrollView',
+            'Component',
+            'Container',
+            'Screen',
+            'AppProvider',
+            'Checkbox.Item',
+            'TextInputPaper',
+            'StatusIcon',
+            'CircularProgressBase',
+            'CircularProgress',
+          ],
+        },
+      ],
+
+      // --- React Hooks Rules ---
+      'react-hooks-addons/no-unused-deps': 'warn',
+      'react-hooks/exhaustive-deps': [
+        'warn',
+        {
+          additionalHooks:
+            '(useEffectIgnoreFirstRender|useAsyncEffect|useEffectDebounce|useEffectIgnoreFirstRender|useEffectInterval|useMemoCache|useMemoCacheKey|useMemoTiming|useCallbackThrottle)',
         },
       ],
     },
