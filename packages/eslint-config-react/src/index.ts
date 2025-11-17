@@ -23,8 +23,11 @@ const config: Linter.Config[] = [
 
   // React plugin configuration
   {
-    files: ['**/*.{tsx|jsx}'],
+    files: ['**/*.{tsx,jsx}'],
     languageOptions: {
+      globals: {
+        React: 'readonly',
+      },
       parserOptions: {
         ecmaFeatures: {
           jsx: true,

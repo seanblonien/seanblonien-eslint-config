@@ -41,11 +41,9 @@ describe('@seanblonien/eslint-config-react', () => {
     const code = `
 import React from 'react';
 
-const Component = () => {
-  return <div>Hello</div>;
+export const Component: React.FC = () => {
+  return <p>Hello</p>;
 };
-
-export default Component;
 `;
 
     const result = await eslint.lintText(code, { filePath: 'test.tsx' });
@@ -58,14 +56,17 @@ export default Component;
       overrideConfig,
     });
 
-    // Self-closing component should be enforced
-    const code = `
-const Component = () => {
-  return <div></div>;
+    // Explicitly break react/jsx-boolean-value rule - boolean props should not have ={true}
+    const code = `import { useState } from 'react';
+
+export const Component: React.FC = () => {
+  const [isActive] = useState(true);
+
+  return <button disabled={true}>Click me</button>;
 };
 `;
 
     const result = await eslint.lintText(code, { filePath: 'test.tsx' });
-    expect(result[0].messages.some((m) => m.ruleId === 'react/self-closing-comp')).toBe(true);
+    expect(result[0].messages.some((m) => m.ruleId === 'react/jsx-boolean-value')).toBe(true);
   });
 });
