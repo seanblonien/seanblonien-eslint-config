@@ -44,13 +44,14 @@ export default [
 
 ## What's Included
 
-This config extends [@seanblonien/eslint-config-base](../eslint-config-base) and adds:
+This config extends [@seanblonien/eslint-config-base](../eslint-config-base) and builds on top of the following additional direct dependencies:
 
-- **React plugin** - React recommended rules with opinionated defaults
-- **React Hooks** - Rules for Hooks with additional best practices from react-hooks-addons
-- **JSX Accessibility** - Comprehensive a11y rules for accessible React applications
-- **React Compiler** - Support for the experimental React Compiler
-- **Automatic version detection** - No need to manually specify React version
+- **[@seanblonien/eslint-config-base](https://www.npmjs.com/package/@seanblonien/eslint-config-base)** - Base TypeScript/JavaScript ESLint configuration (includes all base rules and plugins)
+- **[eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)** - React-specific linting rules with automatic version detection
+- **[eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)** - Enforces Rules of Hooks and exhaustive dependencies
+- **[eslint-plugin-react-hooks-addons](https://www.npmjs.com/package/eslint-plugin-react-hooks-addons)** - Additional best practices for React Hooks
+- **[eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)** - Accessibility rules for JSX elements
+- **[eslint-plugin-react-compiler](https://www.npmjs.com/package/eslint-plugin-react-compiler)** - Linting support for the experimental React Compiler
 
 ## Requirements
 

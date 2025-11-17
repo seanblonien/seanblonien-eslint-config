@@ -42,10 +42,22 @@ export default [
 
 ## What's Included
 
-- **ESLint recommended rules** - Core ESLint best practices
-- **TypeScript support** - Full TypeScript linting without project-aware rules for faster performance
-- **Import plugin** - Automatic import sorting and organization
-- **Unused variable detection** - Catches unused variables while allowing `_` prefix for intentionally unused variables
+This base config builds on top of the following direct dependencies:
+
+- **[@eslint/js](https://www.npmjs.com/package/@eslint/js)** - ESLint's recommended JavaScript rules
+- **[typescript-eslint](https://www.npmjs.com/package/typescript-eslint)** - TypeScript linting without project-aware rules for faster performance
+- **[@stylistic/eslint-plugin](https://www.npmjs.com/package/@stylistic/eslint-plugin)** - Code style and formatting rules
+- **[eslint-plugin-import-x](https://www.npmjs.com/package/eslint-plugin-import-x)** - Import/export validation and organization
+- **[eslint-import-resolver-typescript](https://www.npmjs.com/package/eslint-import-resolver-typescript)** - TypeScript import resolution for import-x
+- **[eslint-plugin-unused-imports](https://www.npmjs.com/package/eslint-plugin-unused-imports)** - Detects and removes unused imports
+- **[eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)** - Modern JavaScript/TypeScript best practices
+- **[eslint-plugin-sonarjs](https://www.npmjs.com/package/eslint-plugin-sonarjs)** - Code quality and bug detection rules
+- **[@eslint-community/eslint-plugin-eslint-comments](https://www.npmjs.com/package/@eslint-community/eslint-plugin-eslint-comments)** - Best practices for ESLint directive comments
+- **[eslint-plugin-ban](https://www.npmjs.com/package/eslint-plugin-ban)** - Ban specific imports or code patterns
+- **[eslint-plugin-no-loops](https://www.npmjs.com/package/eslint-plugin-no-loops)** - Encourages functional programming patterns
+- **[eslint-plugin-sort](https://www.npmjs.com/package/eslint-plugin-sort)** - Automatic sorting of imports, exports, and more
+- **[eslint-plugin-testing-library](https://www.npmjs.com/package/eslint-plugin-testing-library)** - Best practices for Testing Library
+- **[globals](https://www.npmjs.com/package/globals)** - Global variable definitions for different environments
 
 ## Requirements
 

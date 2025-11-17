@@ -420,6 +420,15 @@ const config: Linter.Config[] = [
       ],
     },
   },
+
+  // Config files overrides
+  {
+    files: ['**/*.config.{ts,js,mjs,cjs}'],
+    rules: {
+      '@typescript-eslint/no-magic-numbers': 'off',
+      '@typescript-eslint/naming-convention': 'off',
+    },
+  },
 ];
 
 export default config;
