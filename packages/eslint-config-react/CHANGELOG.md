@@ -1,3 +1,10 @@
+## @seanblonien/eslint-config-react [1.0.7](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.6...@seanblonien/eslint-config-react@1.0.7) (2025-12-05)
+
+
+### Bug Fixes
+
+* Fix issue with eslint-plugin-next not allowing dynamic ([2c3f7d8](https://github.com/seanblonien/seanblonien-eslint-config/commit/2c3f7d8494b8338795be57983a47655aade0b3e6))
+
 ## @seanblonien/eslint-config-react [1.0.6](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.5...@seanblonien/eslint-config-react@1.0.6) (2025-12-05)
 
 
