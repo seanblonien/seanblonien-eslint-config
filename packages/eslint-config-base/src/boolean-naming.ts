@@ -60,8 +60,8 @@ const booleanNameExceptionsList = [
 ];
 // A singular regex string for the boolean name exceptions (instead of array of expressions)
 export const booleanNameExceptions = concatElementsByRegexUnion(booleanNameExceptionsList);
-// The full boolean naming convetions regex
 
+// The full boolean naming convetions regex
 export const booleanNameConvention = new RegExp(
   `${concatElementsByRegexUnion(
     booleanNamePrefixes,
