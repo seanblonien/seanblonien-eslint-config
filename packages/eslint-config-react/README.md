@@ -50,22 +50,22 @@ export default [
 
 ### Next.js Projects
 
-Use the `configWithNext` named export for Next.js projects (includes Next.js recommended rules and Core Web Vitals):
+Use the `configWithNext` named export for Next.js projects (includes Next.js recommended rules and Core Web Vitals). This helper is **async**, so your `eslint.config.ts` must support top-level `await` (ESLint 9+ flat config):
 
 ```ts
 // eslint.config.ts
 import { configWithNext } from '@seanblonien/eslint-config-react';
 
 export default [
-  ...configWithNext(),
-  {
-    rules: {
-      // Override rules as needed
-    },
-  },
-  {
-    ignores: ['dist/**', 'build/**', '.next/**'],
-  },
+	  ...(await configWithNext()),
+	  {
+	    rules: {
+	      // Override rules as needed
+	    },
+	  },
+	  {
+	    ignores: ['dist/**', 'build/**', '.next/**'],
+	  },
 ];
 ```
 

@@ -84,14 +84,14 @@ export const Component: React.FC = () => {
 describe.skipIf(!hasNextPlugin)('@seanblonien/eslint-config-react - configWithNext', () => {
   it('should export configWithNext as a function returning an array', async () => {
     const { configWithNext } = await import('./index');
-    const nextConfigArray = configWithNext();
+    const nextConfigArray = await configWithNext();
     expect(Array.isArray(nextConfigArray)).toBe(true);
     expect(nextConfigArray.length).toBeGreaterThan(0);
   });
 
   it('should include Next.js plugin configuration', async () => {
     const { configWithNext } = await import('./index');
-    const nextConfigArray = configWithNext();
+    const nextConfigArray = await configWithNext();
     const nextConfig = nextConfigArray.find((c) => c.plugins?.['@next/next']);
     expect(nextConfig).toBeDefined();
     expect(nextConfig?.plugins?.['@next/next']).toBeDefined();
@@ -99,7 +99,7 @@ describe.skipIf(!hasNextPlugin)('@seanblonien/eslint-config-react - configWithNe
 
   it('should include Next.js recommended rules', async () => {
     const { configWithNext } = await import('./index');
-    const nextConfigArray = configWithNext();
+    const nextConfigArray = await configWithNext();
     const nextConfig = nextConfigArray.find((c) => c.plugins?.['@next/next']);
     expect(nextConfig?.rules).toBeDefined();
     expect(Object.keys(nextConfig?.rules ?? {}).length).toBeGreaterThan(0);
@@ -110,7 +110,7 @@ describe.skipIf(!hasNextPlugin)('@seanblonien/eslint-config-react - configWithNe
     const eslint = new ESLint({
       overrideConfigFile: true,
       overrideConfig: [
-        ...configWithNext(),
+        ...(await configWithNext()),
         {
           languageOptions: {
             parserOptions: {
