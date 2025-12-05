@@ -4,6 +4,7 @@
     "rootDir": "."
   },
   "include": [
-    "eslint.config.ts"
+    "eslint.config.ts",
+    "commitlint.config.ts"
   ]
 }
