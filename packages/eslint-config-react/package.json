@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@seanblonien/eslint-config-base": "1.0.3",
+    "@typescript-eslint/parser": "^8.48.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
@@ -48,15 +49,15 @@
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
-    "@types/react": "^19.2.5",
+    "@types/react": "^19.2.7",
     "eslint": "^9.39.1",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.9"
+    "vitest": "^4.0.15"
   },
   "peerDependencies": {
-    "eslint": ">= 9",
-    "@next/eslint-plugin-next": ">= 15"
+    "@next/eslint-plugin-next": ">= 15",
+    "eslint": ">= 9"
   },
   "peerDependenciesMeta": {
     "@next/eslint-plugin-next": {
