@@ -109,6 +109,7 @@ const config: Linter.Config[] = [
       'function-call-argument-newline': ['warn', 'consistent'],
       'no-multiple-empty-lines': ['warn', { max: 1, maxEOF: 1 }],
       'no-multi-spaces': 'warn',
+      'no-useless-rename': 'warn',
       'arrow-spacing': 'warn',
       'space-infix-ops': 'warn',
       '@stylistic/operator-linebreak': [

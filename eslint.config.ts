@@ -1,6 +1,6 @@
 // Import from source to avoid circular dependency during build
-import baseConfig from './packages/eslint-config-base/src/index';
 import type { Linter } from 'eslint';
+import baseConfig from './packages/eslint-config-base/src/index';
 
 export default [
   ...baseConfig,
@@ -17,6 +17,6 @@ export default [
     files: ['**/*.config.ts'],
     rules: {
       '@typescript-eslint/naming-convention': 'off',
-    }
-  }
+    },
+  },
 ] as Linter.Config[];

@@ -17,12 +17,12 @@
     "clean": "turbo clean && rm -rf node_modules",
     "clean:all": "find . -type d \\( -name dist -o -name .turbo \\) -prune -exec rm -rf {} +",
     "commitlint": "commitlint --edit",
-    "lint": "turbo lint",
+    "lint": "eslint . --fix",
     "prepare": "husky",
     "release": "pnpm build && multi-semantic-release",
     "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
     "test": "turbo test",
-    "validate": "turbo lint && turbo build && turbo test"
+    "validate": "pnpm lint && turbo build && turbo test"
   },
   "devDependencies": {
     "@anolilab/semantic-release-pnpm": "^3.2.0",
