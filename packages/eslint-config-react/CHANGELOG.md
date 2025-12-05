@@ -1,3 +1,18 @@
+## @seanblonien/eslint-config-react [1.0.6](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.5...@seanblonien/eslint-config-react@1.0.6) (2025-12-05)
+
+
+### Bug Fixes
+
+* Force patch release since npm-publish failed ([582015f](https://github.com/seanblonien/seanblonien-eslint-config/commit/582015f1ad0ba070e3e0400322d4fdcfad645a43))
+
+
+
+
+
+### Dependencies
+
+* **@seanblonien/eslint-config-base:** upgraded to 1.0.5
+
 ## @seanblonien/eslint-config-react [1.0.5](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.4...@seanblonien/eslint-config-react@1.0.5) (2025-12-05)
 
 
