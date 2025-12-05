@@ -1,3 +1,10 @@
+## @seanblonien/eslint-config-react [1.0.4](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.3...@seanblonien/eslint-config-react@1.0.4) (2025-12-05)
+
+
+### Bug Fixes
+
+* Updated package dependencies, non-breaking ([#9](https://github.com/seanblonien/seanblonien-eslint-config/issues/9)) ([31218b6](https://github.com/seanblonien/seanblonien-eslint-config/commit/31218b6143c4441a5adfd3e042536ecfb1c9c182))
+
 ## @seanblonien/eslint-config-react [1.0.3](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.2...@seanblonien/eslint-config-react@1.0.3) (2025-11-17)
 
 
