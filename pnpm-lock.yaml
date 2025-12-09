@@ -12,11 +12,11 @@ importers:
   .:
     devDependencies:
       '@anolilab/semantic-release-pnpm':
-        specifier: ^3.2.0
-        version: 3.2.0(@types/node@24.10.1)(yaml@2.8.2)
+        specifier: ^3.2.2
+        version: 3.2.2(@types/node@24.10.2)(yaml@2.8.2)
       '@commitlint/cli':
         specifier: ^20.2.0
-        version: 20.2.0(@types/node@24.10.1)(typescript@5.9.3)
+        version: 20.2.0(@types/node@24.10.2)(typescript@5.9.3)
       '@commitlint/config-conventional':
         specifier: ^20.2.0
         version: 20.2.0
@@ -188,8 +188,8 @@ packages:
     resolution: {integrity: sha512-JlyioHSFKJ0DugoCtPSvZJW2SKLPgaM422DTHlgwKw+Q/Ibk34lBUAZEZVuPsYckvdOu64jXwqNsmaGGQUw2Tg==}
     engines: {node: ^22.14.0 || >=24.10.0}
 
-  '@anolilab/semantic-release-pnpm@3.2.0':
-    resolution: {integrity: sha512-HIgDUGY4Chej07rvHC09uwbYMtcVnE9VrbBuM7ZP2tOo6uDPsMd08aL1+fcZDwMxkwwLp/4eSPv9xe413oeHjg==}
+  '@anolilab/semantic-release-pnpm@3.2.2':
+    resolution: {integrity: sha512-Rov3lFxfJ8hEt07o6UZ7TsXfs5/hx/D+3o8mH1UIf7h3dLO761PlC3lWz/7GdqMN362o+VBywdlqJbWPN//SPQ==}
     engines: {node: ^22.14.0 || >=24.10.0}
 
   '@antfu/install-pkg@1.1.0':
@@ -1124,6 +1124,9 @@ packages:
 
   '@types/node@24.10.1':
     resolution: {integrity: sha512-GNWcUTRBgIRJD5zj+Tq0fKOJ5XZajIiBroOF0yvj2bSU1WvNdYS/dn9UxwsujGW4JX06dnHyjV2y9rRaybH0iQ==}
+
+  '@types/node@24.10.2':
+    resolution: {integrity: sha512-WOhQTZ4G8xZ1tjJTvKOpyEVSGgOTvJAfDK3FNFgELyaTpzhdgHVHeqW8V+UJvzF5BT+/B54T/1S2K6gd9c7bbA==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -3920,8 +3923,8 @@ packages:
     resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
     engines: {node: '>=16'}
 
-  type-fest@5.3.0:
-    resolution: {integrity: sha512-d9CwU93nN0IA1QL+GSNDdwLAu1Ew5ZjTwupvedwg3WdfoH6pIDvYQ2hV0Uc2nKBLPq7NB5apCx57MLS5qlmO5g==}
+  type-fest@5.3.1:
+    resolution: {integrity: sha512-VCn+LMHbd4t6sF3wfU/+HKT63C9OoyrSIf4b+vtWHpt2U7/4InZG467YDNMFMR70DdHjAdpPWmw2lzRdg0Xqqg==}
     engines: {node: '>=20'}
 
   typed-array-buffer@1.0.3:
@@ -4261,13 +4264,13 @@ snapshots:
     transitivePeerDependencies:
       - yaml
 
-  '@anolilab/semantic-release-pnpm@3.2.0(@types/node@24.10.1)(yaml@2.8.2)':
+  '@anolilab/semantic-release-pnpm@3.2.2(@types/node@24.10.2)(yaml@2.8.2)':
     dependencies:
       '@actions/core': 1.11.1
       '@anolilab/rc': 3.2.0(yaml@2.8.2)
       '@semantic-release/error': 4.0.0
       '@visulima/fs': 4.1.0(yaml@2.8.2)
-      '@visulima/package': 4.1.7(@types/node@24.10.1)
+      '@visulima/package': 4.1.7(@types/node@24.10.2)
       '@visulima/path': 2.0.5
       debug: 4.4.3
       env-ci: 11.2.0
@@ -4447,11 +4450,11 @@ snapshots:
   '@colors/colors@1.5.0':
     optional: true
 
-  '@commitlint/cli@20.2.0(@types/node@24.10.1)(typescript@5.9.3)':
+  '@commitlint/cli@20.2.0(@types/node@24.10.2)(typescript@5.9.3)':
     dependencies:
       '@commitlint/format': 20.2.0
       '@commitlint/lint': 20.2.0
-      '@commitlint/load': 20.2.0(@types/node@24.10.1)(typescript@5.9.3)
+      '@commitlint/load': 20.2.0(@types/node@24.10.2)(typescript@5.9.3)
       '@commitlint/read': 20.2.0
       '@commitlint/types': 20.2.0
       tinyexec: 1.0.2
@@ -4498,7 +4501,7 @@ snapshots:
       '@commitlint/rules': 20.2.0
       '@commitlint/types': 20.2.0
 
-  '@commitlint/load@20.2.0(@types/node@24.10.1)(typescript@5.9.3)':
+  '@commitlint/load@20.2.0(@types/node@24.10.2)(typescript@5.9.3)':
     dependencies:
       '@commitlint/config-validator': 20.2.0
       '@commitlint/execute-rule': 20.0.0
@@ -4506,7 +4509,7 @@ snapshots:
       '@commitlint/types': 20.2.0
       chalk: 5.6.2
       cosmiconfig: 9.0.0(typescript@5.9.3)
-      cosmiconfig-typescript-loader: 6.2.0(@types/node@24.10.1)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3)
+      cosmiconfig-typescript-loader: 6.2.0(@types/node@24.10.2)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -4798,31 +4801,31 @@ snapshots:
 
   '@inquirer/ansi@1.0.2': {}
 
-  '@inquirer/confirm@5.1.21(@types/node@24.10.1)':
+  '@inquirer/confirm@5.1.21(@types/node@24.10.2)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@24.10.1)
-      '@inquirer/type': 3.0.10(@types/node@24.10.1)
+      '@inquirer/core': 10.3.2(@types/node@24.10.2)
+      '@inquirer/type': 3.0.10(@types/node@24.10.2)
     optionalDependencies:
-      '@types/node': 24.10.1
+      '@types/node': 24.10.2
 
-  '@inquirer/core@10.3.2(@types/node@24.10.1)':
+  '@inquirer/core@10.3.2(@types/node@24.10.2)':
     dependencies:
       '@inquirer/ansi': 1.0.2
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@24.10.1)
+      '@inquirer/type': 3.0.10(@types/node@24.10.2)
       cli-width: 4.1.0
       mute-stream: 2.0.0
       signal-exit: 4.1.0
       wrap-ansi: 6.2.0
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 24.10.1
+      '@types/node': 24.10.2
 
   '@inquirer/figures@1.0.15': {}
 
-  '@inquirer/type@3.0.10(@types/node@24.10.1)':
+  '@inquirer/type@3.0.10(@types/node@24.10.2)':
     optionalDependencies:
-      '@types/node': 24.10.1
+      '@types/node': 24.10.2
 
   '@isaacs/balanced-match@4.0.1': {}
 
@@ -5182,7 +5185,7 @@ snapshots:
 
   '@types/conventional-commits-parser@5.0.2':
     dependencies:
-      '@types/node': 24.10.1
+      '@types/node': 24.10.2
 
   '@types/deep-eql@4.0.2': {}
 
@@ -5198,6 +5201,10 @@ snapshots:
   '@types/node@12.20.55': {}
 
   '@types/node@24.10.1':
+    dependencies:
+      undici-types: 7.16.0
+
+  '@types/node@24.10.2':
     dependencies:
       undici-types: 7.16.0
 
@@ -5363,14 +5370,14 @@ snapshots:
   '@visulima/fs@4.1.0(yaml@2.8.2)':
     dependencies:
       '@visulima/path': 2.0.5
-      type-fest: 5.3.0
+      type-fest: 5.3.1
     optionalDependencies:
       yaml: 2.8.2
 
-  '@visulima/package@4.1.7(@types/node@24.10.1)':
+  '@visulima/package@4.1.7(@types/node@24.10.2)':
     dependencies:
       '@antfu/install-pkg': 1.1.0
-      '@inquirer/confirm': 5.1.21(@types/node@24.10.1)
+      '@inquirer/confirm': 5.1.21(@types/node@24.10.2)
       '@visulima/fs': 4.1.0(yaml@2.8.2)
       '@visulima/path': 2.0.5
       json5: 2.2.3
@@ -5792,9 +5799,9 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  cosmiconfig-typescript-loader@6.2.0(@types/node@24.10.1)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3):
+  cosmiconfig-typescript-loader@6.2.0(@types/node@24.10.2)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
-      '@types/node': 24.10.1
+      '@types/node': 24.10.2
       cosmiconfig: 9.0.0(typescript@5.9.3)
       jiti: 2.6.1
       typescript: 5.9.3
@@ -7587,7 +7594,7 @@ snapshots:
     dependencies:
       find-up-simple: 1.0.1
       read-pkg: 10.0.0
-      type-fest: 5.3.0
+      type-fest: 5.3.1
 
   read-pkg-up@7.0.1:
     dependencies:
@@ -7600,7 +7607,7 @@ snapshots:
       '@types/normalize-package-data': 2.4.4
       normalize-package-data: 8.0.0
       parse-json: 8.3.0
-      type-fest: 5.3.0
+      type-fest: 5.3.1
       unicorn-magic: 0.3.0
 
   read-pkg@5.2.0:
@@ -8207,7 +8214,7 @@ snapshots:
 
   type-fest@4.41.0: {}
 
-  type-fest@5.3.0:
+  type-fest@5.3.1:
     dependencies:
       tagged-tag: 1.0.0
 

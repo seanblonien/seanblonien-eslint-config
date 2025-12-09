@@ -110,7 +110,7 @@ describe.skipIf(!hasNextPlugin)('@seanblonien/eslint-config-react - configWithNe
     const eslint = new ESLint({
       overrideConfigFile: true,
       overrideConfig: [
-        ...(await configWithNext()),
+        ...await configWithNext(),
         {
           languageOptions: {
             parserOptions: {

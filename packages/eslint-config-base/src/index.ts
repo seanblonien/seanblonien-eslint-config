@@ -133,12 +133,50 @@ const config: Linter.Config[] = [
           ignoreRegExpLiterals: true,
         },
       ],
+      'no-extra-parens': [
+        'error',
+        'all',
+        {
+          ignoreJSX: 'all', // don’t complain about JSX parens
+          enforceForArrowConditionals: false,
+          nestedBinaryExpressions: false,
+        },
+      ],
+      '@stylistic/jsx-wrap-multilines': [
+        'error',
+        {
+          declaration: 'parens-new-line',
+          assignment: 'parens-new-line',
+          return: 'parens-new-line',
+          arrow: 'parens-new-line',
+          condition: 'parens-new-line',
+          logical: 'parens-new-line',
+        },
+      ],
       'max-lines-per-function': ['error', 120],
       'max-lines': ['error', { max: 900, skipBlankLines: true }],
       'func-style': ['warn', 'expression'],
       'padding-line-between-statements': [
         'error',
-        { blankLine: 'never', prev: '*', next: 'import' },
+        {
+          // Require a blank line after directive prologues ("use client", "use strict", etc.)
+          blankLine: 'always',
+          prev: 'directive',
+          next: '*',
+        },
+        {
+          // But we *don't* want to require blank lines between multiple directives
+          // (so `"use client";` can be followed immediately by `"use strict";`)
+          blankLine: 'any',
+          prev: 'directive',
+          next: 'directive',
+        },
+        {
+          // No blank line between import and import statements
+          blankLine: 'never',
+          prev: 'import',
+          next: 'import',
+        },
       ],
       'object-shorthand': ['warn', 'always'],
       'arrow-body-style': ['warn', 'as-needed'],
@@ -173,6 +211,7 @@ const config: Linter.Config[] = [
       'no-console': 'warn',
       'no-useless-concat': 'warn',
       'no-new': 'error',
+      'no-extra-semi': 'error',
       'no-implicit-coercion': ['warn', { allow: ['!!'] }],
       'no-extra-boolean-cast': 'warn',
 
@@ -362,7 +401,7 @@ const config: Linter.Config[] = [
       // 'import/no-restricted-paths': ['warn', { zones: restrictedPaths }], // Define restrictedPaths
       'import-x/no-named-as-default-member': 'off',
       'import-x/no-absolute-path': 'warn',
-      'import-x/newline-after-import': 'warn',
+      'import-x/newline-after-import': ['warn', { count: 1 }],
       'import-x/no-cycle': ['error', { maxDepth: 1, ignoreExternal: true }],
       'import-x/order': ['warn',
         {
