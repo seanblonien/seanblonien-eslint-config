@@ -1,3 +1,18 @@
+## @seanblonien/eslint-config-react [1.0.8](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.7...@seanblonien/eslint-config-react@1.0.8) (2025-12-09)
+
+
+### Bug Fixes
+
+* no-extra-parens, padding for lines, no-extra-semi, with bool prefix ([c18de71](https://github.com/seanblonien/seanblonien-eslint-config/commit/c18de7197dea05464a8be6969b7b3574168a31f0))
+
+
+
+
+
+### Dependencies
+
+* **@seanblonien/eslint-config-base:** upgraded to 1.0.6
+
 ## @seanblonien/eslint-config-react [1.0.7](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.6...@seanblonien/eslint-config-react@1.0.7) (2025-12-05)
 
 
