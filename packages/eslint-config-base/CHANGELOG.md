@@ -1,3 +1,11 @@
+## @seanblonien/eslint-config-base [1.0.6](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.5...@seanblonien/eslint-config-base@1.0.6) (2025-12-09)
+
+
+### Bug Fixes
+
+* Moved to top-level linter, aded no-useless-rename ([e6bf75d](https://github.com/seanblonien/seanblonien-eslint-config/commit/e6bf75dab158ee904b8e5e2703340be62f5b1b9e))
+* no-extra-parens, padding for lines, no-extra-semi, with bool prefix ([c18de71](https://github.com/seanblonien/seanblonien-eslint-config/commit/c18de7197dea05464a8be6969b7b3574168a31f0))
+
 ## @seanblonien/eslint-config-base [1.0.5](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.4...@seanblonien/eslint-config-base@1.0.5) (2025-12-05)
 
 
