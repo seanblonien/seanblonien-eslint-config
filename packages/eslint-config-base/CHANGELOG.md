@@ -1,3 +1,10 @@
+## @seanblonien/eslint-config-base [1.0.7](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.6...@seanblonien/eslint-config-base@1.0.7) (2025-12-21)
+
+
+### Bug Fixes
+
+* Fix zod broken v4 resolution error ([ee97a42](https://github.com/seanblonien/seanblonien-eslint-config/commit/ee97a42dc0f928569818b1c3752d3e8e2c799fc5))
+
 ## @seanblonien/eslint-config-base [1.0.6](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.5...@seanblonien/eslint-config-base@1.0.6) (2025-12-09)
 
 
