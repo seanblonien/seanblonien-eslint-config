@@ -1,3 +1,18 @@
+## @seanblonien/eslint-config-react [1.0.9](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.8...@seanblonien/eslint-config-react@1.0.9) (2025-12-21)
+
+
+### Bug Fixes
+
+* Fix zod broken v4 resolution error ([ee97a42](https://github.com/seanblonien/seanblonien-eslint-config/commit/ee97a42dc0f928569818b1c3752d3e8e2c799fc5))
+
+
+
+
+
+### Dependencies
+
+* **@seanblonien/eslint-config-base:** upgraded to 1.0.7
+
 ## @seanblonien/eslint-config-react [1.0.8](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.7...@seanblonien/eslint-config-react@1.0.8) (2025-12-09)
 
 
