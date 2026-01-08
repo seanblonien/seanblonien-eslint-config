@@ -35,7 +35,6 @@
   "scripts": {
     "build": "tsup",
     "clean": "rm -rf dist",
-    "lint": "eslint . --fix",
     "test": "vitest run"
   },
   "dependencies": {
