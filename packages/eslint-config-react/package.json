@@ -1,6 +1,6 @@
 {
   "name": "@seanblonien/eslint-config-react",
-  "version": "1.0.10",
+  "version": "0.0.0",
   "description": "Sean Blonien's opinionated ESLint config for TypeScript & React projects",
   "keywords": [
     "eslint",
@@ -39,7 +39,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@seanblonien/eslint-config-base": "1.0.8",
+    "@seanblonien/eslint-config-base": "workspace:*",
     "@typescript-eslint/parser": "^8.52.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
