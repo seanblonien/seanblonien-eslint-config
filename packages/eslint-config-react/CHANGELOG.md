@@ -1,3 +1,18 @@
+## @seanblonien/eslint-config-react [1.0.10](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.9...@seanblonien/eslint-config-react@1.0.10) (2026-01-08)
+
+
+### Bug Fixes
+
+* Added new react rule you might not need an effect, dep updates ([de8a5e2](https://github.com/seanblonien/seanblonien-eslint-config/commit/de8a5e2e290c6e779f638de3e2de965a42f871af))
+
+
+
+
+
+### Dependencies
+
+* **@seanblonien/eslint-config-base:** upgraded to 1.0.8
+
 ## @seanblonien/eslint-config-react [1.0.9](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.8...@seanblonien/eslint-config-react@1.0.9) (2025-12-21)
 
 
