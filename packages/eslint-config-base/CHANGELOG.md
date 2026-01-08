@@ -1,3 +1,9 @@
+## @seanblonien/eslint-config-base [1.0.10](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.9...@seanblonien/eslint-config-base@1.0.10) (2026-01-08)
+
+### Bug Fixes
+
+* Fix auto-updating of package.json hanging pnpm workspace settings ([7c39ecd](https://github.com/seanblonien/seanblonien-eslint-config/commit/7c39ecd36fb9137a1992c12badc41840db2ea80a))
+
 ## @seanblonien/eslint-config-base [1.0.9](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.8...@seanblonien/eslint-config-base@1.0.9) (2026-01-08)
 
 
