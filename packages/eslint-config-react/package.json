@@ -39,13 +39,14 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@seanblonien/eslint-config-base": "1.0.7",
-    "@typescript-eslint/parser": "^8.50.0",
+    "@seanblonien/eslint-config-base": "workspace:*",
+    "@typescript-eslint/parser": "^8.52.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
-    "eslint-plugin-react-hooks": "7.0.0",
-    "eslint-plugin-react-hooks-addons": "^0.5.0"
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-hooks-addons": "^0.5.0",
+    "eslint-plugin-react-you-might-not-need-an-effect": "^0.8.3"
   },
   "devDependencies": {
     "@types/node": "^24.10.4",

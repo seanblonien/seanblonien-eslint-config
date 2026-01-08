@@ -6,6 +6,7 @@ import reactPlugin from 'eslint-plugin-react';
 import reactCompilerPlugin from 'eslint-plugin-react-compiler';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactHooksAddonsPlugin from 'eslint-plugin-react-hooks-addons';
+import reactYouMightNotNeedAnEffect from 'eslint-plugin-react-you-might-not-need-an-effect';
 import type { Linter } from 'eslint';
 
 const config: Linter.Config[] = [
@@ -20,6 +21,7 @@ const config: Linter.Config[] = [
   ).flat.recommended,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- incorrect type definition from package
   jsxA11y.flatConfigs.recommended as Linter.Config,
+  reactYouMightNotNeedAnEffect.configs.recommended,
 
   // React plugin configuration
   {
