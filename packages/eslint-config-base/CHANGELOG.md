@@ -1,3 +1,11 @@
+## @seanblonien/eslint-config-base [1.0.9](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.8...@seanblonien/eslint-config-base@1.0.9) (2026-01-08)
+
+
+### Bug Fixes
+
+* Fix auto-updating of package.json file messing with pnpm workspace ([060b552](https://github.com/seanblonien/seanblonien-eslint-config/commit/060b5527dd840e6ab84a15b58f367cbc90846790))
+* Target es2022 for builds ([a81177c](https://github.com/seanblonien/seanblonien-eslint-config/commit/a81177cafc58b4f3787fac6495817c7ca8b1869d))
+
 ## @seanblonien/eslint-config-base [1.0.8](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.7...@seanblonien/eslint-config-base@1.0.8) (2026-01-08)
 
 
