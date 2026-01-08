@@ -1,3 +1,14 @@
+## @seanblonien/eslint-config-react [1.0.12](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.11...@seanblonien/eslint-config-react@1.0.12) (2026-01-08)
+
+### Bug Fixes
+
+* Fix auto-updating of package.json hanging pnpm workspace settings ([7c39ecd](https://github.com/seanblonien/seanblonien-eslint-config/commit/7c39ecd36fb9137a1992c12badc41840db2ea80a))
+
+
+### Dependencies
+
+* **@seanblonien/eslint-config-base:** upgraded to 1.0.10
+
 ## @seanblonien/eslint-config-react [1.0.11](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-react@1.0.10...@seanblonien/eslint-config-react@1.0.11) (2026-01-08)
 
 
