@@ -4,6 +4,7 @@ import eslint from '@eslint/js';
 import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
 import stylistic from '@stylistic/eslint-plugin';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import functionalPlugin from 'eslint-plugin-functional';
 import importXPlugin from 'eslint-plugin-import-x';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import sortPlugin from 'eslint-plugin-sort';
@@ -44,6 +45,11 @@ const config: Linter.Config[] = [
   unicornPlugin.configs.recommended,
   (comments as { recommended: Linter.Config }).recommended,
   sonarjsPlugin.configs.recommended,
+
+  // Functional programming rules
+  functionalPlugin.configs.externalTypeScriptRecommended,
+  functionalPlugin.configs.recommended,
+  functionalPlugin.configs.stylistic,
 
   // Main configuration
   {
@@ -117,6 +123,7 @@ const config: Linter.Config[] = [
       'sonarjs/void-use': 'off', // Allow void operators for type assertions and async function annotations
       'sonarjs/no-nested-conditional': 'off', // Replaced by no-nested-ternary rule
       'sonarjs/no-hardcoded-passwords': 'off',
+      'sonarjs/prefer-read-only-props': 'off',
 
       // Import and testing rules:
       'import-x/no-named-as-default-member': 'off', // Named default exports are sometimes necessary
@@ -176,7 +183,6 @@ const config: Linter.Config[] = [
       'max-lines': ['error', { max: 600, skipBlankLines: true }], // Error when files exceed 900 lines
 
       // Code style preferences:
-      'func-style': ['warn', 'expression'], // Prefer function expressions over declarations
       'object-shorthand': ['warn', 'always'], // Use object shorthand ({ name } instead of { name: name })
       'arrow-body-style': ['warn', 'as-needed'], // Use concise arrow functions when possible
       'prefer-destructuring': 'warn', // Prefer destructuring for object/array access
@@ -461,6 +467,9 @@ const config: Linter.Config[] = [
 
       // === SONARJS ===
       'sonarjs/no-duplicated-branches': 'warn',
+
+      // === FUNCTIONAL ===
+      'functional/functional-parameters': ['error', { allowArgumentsKeyword: false, enforceParameterCount: false }],
     },
     settings: {
       'import-x/extensions': ['.js', '.cjs', '.mjs'],
@@ -480,6 +489,19 @@ const config: Linter.Config[] = [
     rules: {
       '@typescript-eslint/no-magic-numbers': 'off',
       '@typescript-eslint/naming-convention': 'off',
+      'functional/functional-parameters': 'off',
+    },
+  },
+
+  // Test files overrides - functional rules too strict for test code
+  {
+    files: ['**/*.test.{ts,tsx,js,jsx}', '**/*.spec.{ts,tsx,js,jsx}', '**/tests/**', '**/__tests__/**'],
+    rules: {
+      'functional/no-expression-statements': 'off',
+      'functional/no-return-void': 'off',
+      'functional/no-let': 'off',
+      'functional/functional-parameters': 'off',
+      'functional/prefer-immutable-types': 'off',
     },
   },
 ];

@@ -1,7 +1,7 @@
 /**
  * Combines an array of regex expressions into a single regex expression via the union operator.
  */
-const concatElementsByRegexUnion = (elements: string[]) =>
+const concatElementsByRegexUnion = (elements: readonly string[]) =>
   elements.reduce((element, accum, index) => `${accum}${index === 0 ? '' : '|'}${element}`, '');
 
 // Prefixes allowed at the start of a boolean variable/parameter name
