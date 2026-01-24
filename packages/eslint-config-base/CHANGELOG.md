@@ -1,3 +1,9 @@
+## @seanblonien/eslint-config-base [1.0.13](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.12...@seanblonien/eslint-config-base@1.0.13) (2026-01-24)
+
+### Bug Fixes
+
+* Added eslint-plugin-functional, ([fd63d72](https://github.com/seanblonien/seanblonien-eslint-config/commit/fd63d72d7299636cd99e0e13801daf49be021ad7))
+
 ## @seanblonien/eslint-config-base [1.0.12](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.11...@seanblonien/eslint-config-base@1.0.12) (2026-01-24)
 
 ### Bug Fixes
