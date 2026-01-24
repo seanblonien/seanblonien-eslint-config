@@ -1,3 +1,9 @@
+## @seanblonien/eslint-config-base [1.0.14](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.13...@seanblonien/eslint-config-base@1.0.14) (2026-01-24)
+
+### Bug Fixes
+
+* Turn off functional/prefer-immutable-types rule ([c42d590](https://github.com/seanblonien/seanblonien-eslint-config/commit/c42d590fa142934658a02ea6e3225cd29c98dacf))
+
 ## @seanblonien/eslint-config-base [1.0.13](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.12...@seanblonien/eslint-config-base@1.0.13) (2026-01-24)
 
 ### Bug Fixes
