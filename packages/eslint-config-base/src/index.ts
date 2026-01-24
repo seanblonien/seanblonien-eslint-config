@@ -125,6 +125,7 @@ const config: Linter.Config[] = [
       'sonarjs/no-hardcoded-passwords': 'off',
       'sonarjs/redundant-type-aliases': 'off',
       'sonarjs/prefer-read-only-props': 'off',
+      'sonarjs/deprecation': 'off',
 
       // Import and testing rules:
       'import-x/no-named-as-default-member': 'off', // Named default exports are sometimes necessary
