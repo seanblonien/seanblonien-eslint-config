@@ -470,6 +470,7 @@ const config: Linter.Config[] = [
 
       // === FUNCTIONAL ===
       'functional/functional-parameters': ['error', { allowArgumentsKeyword: false, enforceParameterCount: false }],
+      'functional/prefer-immutable-types': 'off',
     },
     settings: {
       'import-x/extensions': ['.js', '.cjs', '.mjs'],
