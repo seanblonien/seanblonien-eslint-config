@@ -123,6 +123,7 @@ const config: Linter.Config[] = [
       'sonarjs/void-use': 'off', // Allow void operators for type assertions and async function annotations
       'sonarjs/no-nested-conditional': 'off', // Replaced by no-nested-ternary rule
       'sonarjs/no-hardcoded-passwords': 'off',
+      'sonarjs/redundant-type-aliases': 'off',
       'sonarjs/prefer-read-only-props': 'off',
 
       // Import and testing rules:
@@ -469,8 +470,15 @@ const config: Linter.Config[] = [
       'sonarjs/no-duplicated-branches': 'warn',
 
       // === FUNCTIONAL ===
-      'functional/functional-parameters': ['error', { allowArgumentsKeyword: false, enforceParameterCount: false }],
       'functional/prefer-immutable-types': 'off',
+      'functional/functional-parameters': 'off',
+      'functional/no-try-statement': 'off',
+      'functional/no-return-void': 'off',
+      'functional/no-expression-statements': 'off',
+      'functional/no-conditional-statements': 'off',
+      'functional/immutable-data': 'off',
+      'functional/no-let': 'off',
+      'functional/no-mixed-types': 'off',
     },
     settings: {
       'import-x/extensions': ['.js', '.cjs', '.mjs'],
