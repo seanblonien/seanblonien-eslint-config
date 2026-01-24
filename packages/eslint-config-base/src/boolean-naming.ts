@@ -54,6 +54,7 @@ const booleanNameExceptionsList = [
   '^allow',
   '^visible',
   '^merge$',
+  '^ssr$',
   '^multiSelect$',
   'Shown$',
   '^enumerable$',

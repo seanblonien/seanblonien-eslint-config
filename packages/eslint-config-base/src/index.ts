@@ -405,7 +405,7 @@ const config: Linter.Config[] = [
       'import-x/no-cycle': ['error', { maxDepth: 1, ignoreExternal: true }],
       'import-x/order': ['warn',
         {
-          groups: [
+          'groups': [
             'builtin', // Node.js built-in modules
             'external', // Packages from node_modules
             ['type', 'internal'], // Type imports, Absolute imports (often aliased like 'src/components')
@@ -414,6 +414,7 @@ const config: Linter.Config[] = [
             'index', // Index file imports (./index.js)
             'object', // Imports from object notation
           ],
+          'newlines-between': 'never',
         }],
 
       // --- Sort Rules ---
