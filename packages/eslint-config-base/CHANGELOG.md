@@ -1,3 +1,9 @@
+## @seanblonien/eslint-config-base [1.0.12](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.11...@seanblonien/eslint-config-base@1.0.12) (2026-01-24)
+
+### Bug Fixes
+
+* Updated rules to be more strict ([a32989c](https://github.com/seanblonien/seanblonien-eslint-config/commit/a32989c22062577f2c744c6a87dd6e0706449072))
+
 ## @seanblonien/eslint-config-base [1.0.11](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.10...@seanblonien/eslint-config-base@1.0.11) (2026-01-24)
 
 ### Bug Fixes
