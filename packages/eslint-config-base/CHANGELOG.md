@@ -1,3 +1,9 @@
+## @seanblonien/eslint-config-base [1.0.11](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.10...@seanblonien/eslint-config-base@1.0.11) (2026-01-24)
+
+### Bug Fixes
+
+* Add ssr boolean exception, add import no newlines rule for imports ([caa03e4](https://github.com/seanblonien/seanblonien-eslint-config/commit/caa03e4a776083256abe7590bd25fe676a3977fb))
+
 ## @seanblonien/eslint-config-base [1.0.10](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.9...@seanblonien/eslint-config-base@1.0.10) (2026-01-08)
 
 ### Bug Fixes
