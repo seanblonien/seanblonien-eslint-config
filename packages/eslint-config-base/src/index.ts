@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers -- config file */
-/* eslint-disable @typescript-eslint/naming-convention -- config file */
+/* eslint-disable @typescript-eslint/no-magic-numbers, @typescript-eslint/naming-convention -- config file */
 import eslint from '@eslint/js';
 // @ts-expect-error - no types available
 import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
@@ -23,18 +22,15 @@ import { booleanNameExceptions, booleanNamePrefixes } from './boolean-naming';
 type Plugin = typeof testingLibraryPlugin;
 
 const config: Linter.Config[] = [
-  // Base recommended rules from ESLint
+  // Base configurations
   eslint.configs.recommended,
-
-  // TypeScript recommended configs
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   ...tseslint.configs.strict,
 
-  // Apply stylistic rules with customized settings
+  // Plugin configurations
   stylistic.configs.customize({
     arrowParens: true,
-    // jsx: true,
     braceStyle: '1tbs',
     commaDangle: 'always-multiline',
     indent: 2,
@@ -42,18 +38,14 @@ const config: Linter.Config[] = [
     quotes: 'single',
     semi: true,
   }),
-
-  // Import plugin configuration
   importXPlugin.flatConfigs.recommended,
   importXPlugin.flatConfigs.typescript,
   sortPlugin.configs['flat/recommended'],
-
-  // Code quality plugins
   unicornPlugin.configs.recommended,
   (comments as { recommended: Linter.Config }).recommended,
   sonarjsPlugin.configs.recommended,
 
-  // General JavaScript/TypeScript configuration
+  // Main configuration
   {
     files: ['**/*.{js,mjs,cjs,ts,tsx}'],
     languageOptions: {
@@ -80,45 +72,68 @@ const config: Linter.Config[] = [
       'unused-imports': unusedImports,
     },
     rules: {
-      // --- Stylistic Rules ---
-      // Core rules turned off in favor of stylistic rules
-      'quotes': 'off',
-      'jsx-quotes': 'off',
-      'func-call-spacing': 'off',
-      'dot-notation': 'off',
-      'no-unused-expressions': 'off',
-      'no-use-before-define': 'off',
-      'default-param-last': 'off',
-      'no-redeclare': 'off',
-      'no-shadow': 'off',
+      // === DISABLED CORE RULES (replaced by plugins) ===
+      // These core ESLint rules are disabled because we use enhanced versions from plugins:
+      'quotes': 'off', // Replaced by @stylistic/quotes with better formatting options and JSX support
+      'jsx-quotes': 'off', // Replaced by @stylistic/jsx-quotes for JSX-specific quote handling
+      'func-call-spacing': 'off', // Replaced by @stylistic/function-call-spacing for consistent spacing
+      'dot-notation': 'off', // Replaced by @typescript-eslint/dot-notation with TypeScript awareness
+      'no-unused-expressions': 'off', // Replaced by @typescript-eslint/no-unused-expressions with better TS support
+      'no-use-before-define': 'off', // Replaced by @typescript-eslint/no-use-before-define for TypeScript hoisting rules
+      'default-param-last': 'off', // Replaced by @typescript-eslint/default-param-last with TS parameter awareness
+      'no-redeclare': 'off', // Replaced by @typescript-eslint/no-redeclare for better type checking
+      'no-shadow': 'off', // Replaced by @typescript-eslint/no-shadow for TypeScript variable shadowing
+      'spaced-comment': 'off', // Replaced by @stylistic/spaced-comment with more formatting options
+      'no-unused-vars': 'off', // Replaced by @typescript-eslint/no-unused-vars and unused-imports plugin
+      '@stylistic/no-unused-vars': 'off', // Replaced by unused-imports/no-unused-vars for better import handling
+      'sonarjs/no-unused-vars': 'off', // Replaced by unused-imports/no-unused-vars to avoid conflicts
+      'no-magic-numbers': 'off', // Replaced by @typescript-eslint/no-magic-numbers with TypeScript-aware exceptions
 
-      // Stylistic (overrides vs stylistic recommended)
-      'quote-props': ['warn', 'consistent-as-needed'],
+      // === DISABLED PLUGIN RULES (intentionally turned off) ===
+      // Sort plugin rules (replaced by import-x/order):
+      'sort/imports': 'off', // Replaced by import-x/order which has better TypeScript support
+      'sort/object-properties': 'off', // Object property sorting is not required
+      'sort/string-unions': 'off', // String union sorting is not required
+
+      // Unicorn rules that are too restrictive or don't match our style:
+      'unicorn/prefer-global-this': 'off', // GlobalThis is not always preferred over window/global
+      'unicorn/prevent-abbreviations': 'off', // Common abbreviations (props, args, etc.) are acceptable
+      'unicorn/no-array-reduce': 'off', // Array.reduce is a valid and useful method
+      'unicorn/no-array-for-each': 'off', // Array.forEach is preferred over for...of in many cases
+      'unicorn/prefer-top-level-await': 'off', // Top-level await is not always appropriate
+      'unicorn/no-array-callback-reference': 'off', // Method references as callbacks are acceptable
+      'unicorn/prefer-switch': 'off', // Switch statements are banned (see no-restricted-syntax below)
+      'unicorn/prefer-object-from-entries': 'off', // Object.fromEntries is not always better
+      'unicorn/no-null': 'off', // Null is still a valid value in many contexts
+
+      // SonarJS rules that are disabled for various reasons:
+      'sonarjs/cognitive-complexity': 'off', // Replaced by core complexity rule which is simpler
+      'sonarjs/no-nested-functions': 'off', // Replaced by complexity rule, nested functions are sometimes needed
+      'sonarjs/function-return-type': 'off', // TypeScript handles return type checking better
+      'sonarjs/no-redundant-optional': 'off', // TypeScript handles optional types better
+      'sonarjs/no-commented-code': 'off', // Performance-intensive rule, commented code is sometimes useful
+      'sonarjs/todo-tag': 'off', // TODO comments are acceptable during development
+      'sonarjs/pseudo-random': 'off', // Math.random() is acceptable for non-cryptographic uses
+      'sonarjs/void-use': 'off', // Allow void operators for type assertions and async function annotations
+      'sonarjs/no-nested-conditional': 'off', // Replaced by no-nested-ternary rule
+      'sonarjs/no-hardcoded-passwords': 'off',
+
+      // Import and testing rules:
+      'import-x/no-named-as-default-member': 'off', // Named default exports are sometimes necessary
+
+      // === STYLISTIC & FORMATTING ===
       '@stylistic/quotes': ['warn', 'single', { avoidEscape: true }],
       '@stylistic/jsx-quotes': ['warn', 'prefer-single'],
-      '@stylistic/jsx-one-expression-per-line': 'off',
       '@stylistic/block-spacing': ['warn', 'never'],
       '@stylistic/object-curly-newline': [
         'warn',
         { ObjectPattern: { multiline: true, consistent: true } },
       ],
-      'object-property-newline': [
-        'warn',
-        { allowAllPropertiesOnSameLine: true },
-      ],
-      'function-call-argument-newline': ['warn', 'consistent'],
-      'no-multiple-empty-lines': ['warn', { max: 1, maxEOF: 1 }],
-      'no-multi-spaces': 'warn',
-      'no-useless-rename': 'warn',
-      'arrow-spacing': 'warn',
-      'space-infix-ops': 'warn',
       '@stylistic/operator-linebreak': [
         'warn',
         'after',
         { overrides: { '?': 'before', ':': 'before' } },
       ],
-      'comma-style': ['warn', 'last'],
-      'complexity': ['warn', { max: 20 }],
       '@stylistic/max-len': [
         'warn',
         {
@@ -126,20 +141,10 @@ const config: Linter.Config[] = [
           comments: 120,
           ignoreUrls: true,
           ignoreTrailingComments: true,
-          ignorePattern:
-        String.raw`^.*eslint-(disable|enable).+|it\(|ErrorCodes|@param|@return|^\s*\[[^\]]+\]:\s*.+?;$`,
+          ignorePattern: String.raw`^.*eslint-(disable|enable).+|it\(|ErrorCodes|@param|@return|^\s*\[[^\]]+\]:\s*.+?;$`,
           ignoreTemplateLiterals: true,
           ignoreStrings: true,
           ignoreRegExpLiterals: true,
-        },
-      ],
-      'no-extra-parens': [
-        'error',
-        'all',
-        {
-          ignoreJSX: 'all', // don’t complain about JSX parens
-          enforceForArrowConditionals: false,
-          nestedBinaryExpressions: false,
         },
       ],
       '@stylistic/jsx-wrap-multilines': [
@@ -153,145 +158,106 @@ const config: Linter.Config[] = [
           logical: 'parens-new-line',
         },
       ],
-      'max-lines-per-function': ['error', 120],
-      'max-lines': ['error', { max: 900, skipBlankLines: true }],
-      'func-style': ['warn', 'expression'],
-      'padding-line-between-statements': [
+      '@stylistic/brace-style': ['warn', '1tbs', { allowSingleLine: true }],
+      '@stylistic/comma-dangle': ['warn', 'always-multiline'],
+      '@stylistic/comma-spacing': 'warn',
+      '@stylistic/function-call-spacing': ['error'],
+      '@stylistic/array-element-newline': ['warn', { multiline: true, consistent: true }],
+      '@stylistic/array-bracket-newline': ['warn', 'consistent'],
+      '@stylistic/no-mixed-operators': ['warn', { allowSamePrecedence: true }],
+      '@stylistic/rest-spread-spacing': ['warn', 'never'],
+      '@stylistic/spaced-comment': ['warn', 'always', { line: { markers: ['!', '?', '-', '**'] } }],
+      '@stylistic/jsx-one-expression-per-line': 'warn',
+
+      // === CODE QUALITY & STRUCTURE ===
+      // Complexity and size limits:
+      'complexity': ['warn', { max: 20 }], // Warn when cyclomatic complexity exceeds 20
+      'max-lines-per-function': ['error', 120], // Error when functions exceed 120 lines
+      'max-lines': ['error', { max: 600, skipBlankLines: true }], // Error when files exceed 900 lines
+
+      // Code style preferences:
+      'func-style': ['warn', 'expression'], // Prefer function expressions over declarations
+      'object-shorthand': ['warn', 'always'], // Use object shorthand ({ name } instead of { name: name })
+      'arrow-body-style': ['warn', 'as-needed'], // Use concise arrow functions when possible
+      'prefer-destructuring': 'warn', // Prefer destructuring for object/array access
+      'prefer-arrow-callback': 'error', // Prefer arrow functions for callbacks
+      'prefer-template': 'warn', // Use template literals instead of string concatenation
+      'one-var': ['error', 'never'], // Declare each variable separately
+      'no-bitwise': 'error', // Disallow bitwise operators (often used for obfuscation)
+
+      // Parentheses and expression clarity:
+      'no-extra-parens': [
         'error',
+        'all',
         {
-          // Require a blank line after directive prologues ("use client", "use strict", etc.)
-          blankLine: 'always',
-          prev: 'directive',
-          next: '*',
-        },
-        {
-          // But we *don't* want to require blank lines between multiple directives
-          // (so `"use client";` can be followed immediately by `"use strict";`)
-          blankLine: 'any',
-          prev: 'directive',
-          next: 'directive',
-        },
-        {
-          // No blank line between import and import statements
-          blankLine: 'never',
-          prev: 'import',
-          next: 'import',
+          ignoreJSX: 'all', // JSX requires parentheses for multi-line expressions
+          enforceForArrowConditionals: false, // Allow parentheses in arrow conditionals
+          nestedBinaryExpressions: false, // Allow parentheses for clarity in nested expressions
         },
       ],
-      'object-shorthand': ['warn', 'always'],
-      'arrow-body-style': ['warn', 'as-needed'],
-      'prefer-destructuring': 'warn',
-      'prefer-arrow-callback': 'error',
-      'prefer-template': 'warn',
-      'one-var': ['error', 'never'],
-      'no-bitwise': 'error',
 
-      // TypeScript equivalents and customizations
-      '@typescript-eslint/no-redeclare': 'error',
-      '@typescript-eslint/default-param-last': 'error',
-      '@typescript-eslint/require-await': 'off',
-      'no-return-await': 'warn',
+      // === SECURITY & BEST PRACTICES ===
+      // Prevent dangerous code execution patterns:
+      'no-eval': 'error', // Disallows eval() which can execute arbitrary code
+      'no-implied-eval': 'error', // Catches indirect eval usage (setTimeout with string, etc.)
+      'no-new-func': 'error', // Prevents Function constructor which is similar to eval
+      'no-script-url': 'error', // Disallows javascript: URLs which are XSS vectors
+
+      // Error handling and promises:
+      'prefer-promise-reject-errors': 'error', // Ensures promises are rejected with Error objects
+      'no-throw-literal': 'error', // Prevents throwing non-Error objects (strings, numbers, etc.)
+
+      // Code quality and safety:
+      'no-unreachable-loop': 'error', // Catches loops with unreachable iterations
+      'no-unsafe-negation': 'error', // Prevents unsafe negation patterns that can cause bugs
+      'yoda': 'error', // Enforces consistent comparison order (variable == constant, not constant == variable)
+
+      // Promise constructor safety:
+      'no-promise-executor-return': 'error', // Prevents returning values from promise executor
+      'no-async-promise-executor': 'error', // Prevents async promise constructors (anti-pattern)
+
+      // === GENERAL JAVASCRIPT RULES ===
+      'quote-props': ['warn', 'consistent-as-needed'],
+      'object-property-newline': ['warn', { allowAllPropertiesOnSameLine: true }],
+      'function-call-argument-newline': ['warn', 'consistent'],
+      'no-multiple-empty-lines': ['warn', { max: 1, maxEOF: 1 }],
+      'no-multi-spaces': 'warn',
+      'no-useless-rename': 'warn',
+      'arrow-spacing': 'warn',
+      'space-infix-ops': 'warn',
+      'comma-style': ['warn', 'last'],
       'no-nested-ternary': 'warn',
       'no-unneeded-ternary': 'warn',
-      'no-else-return': 'warn',
-      'no-constant-condition': 'off',
-      '@typescript-eslint/dot-notation': 'error',
-      '@typescript-eslint/no-unused-expressions': [
-        'error',
-        {
-          allowShortCircuit: true,
-          allowTernary: true,
-          allowTaggedTemplates: true,
-        },
-      ],
-      '@typescript-eslint/no-use-before-define': [
-        'error',
-        { variables: true, functions: false },
-      ],
+      'no-else-return': 'error',
       'no-console': 'warn',
       'no-useless-concat': 'warn',
       'no-new': 'error',
       'no-extra-semi': 'error',
       'no-implicit-coercion': ['warn', { allow: ['!!'] }],
       'no-extra-boolean-cast': 'warn',
-
-      // Magic numbers
-      'no-magic-numbers': 'off',
-      '@typescript-eslint/no-magic-numbers': [
+      'padding-line-between-statements': [
         'error',
         {
-          ignoreEnums: true,
-          ignoreArrayIndexes: true,
-          ignoreDefaultValues: true,
-          ignoreTypeIndexes: true,
-          ignore: [0, 1, -1, 2],
+          blankLine: 'always',
+          prev: 'directive',
+          next: '*',
+        },
+        {
+          blankLine: 'any',
+          prev: 'directive',
+          next: 'directive',
+        },
+        {
+          blankLine: 'never',
+          prev: 'import',
+          next: 'import',
         },
       ],
 
-      // More stylistic specifics
-      '@stylistic/brace-style': ['warn', '1tbs', { allowSingleLine: true }],
-      '@stylistic/comma-dangle': ['warn', 'always-multiline'],
-      '@stylistic/comma-spacing': 'warn',
-      '@stylistic/function-call-spacing': ['error'],
-
-      // Naming
-      'camelcase': ['warn', { allow: ['^_', 'content_type', 'reply_to'] }],
-      '@typescript-eslint/naming-convention': [
-        'warn',
-        // Property naming rules
-        {
-          selector: 'property',
-          format: ['camelCase', 'UPPER_CASE'],
-          leadingUnderscore: 'allow',
-          filter: {
-            regex: String.raw`^_|[- /?:{}@%]|Provider|Comp|^item$|^condition$|^container$|^Container$|^\d+$`, // ignore properties with dashes/slashes/spaces
-            match: false,
-          },
-        },
-        // Variable-like naming rules
-        {
-          selector: 'variableLike',
-          format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
-          trailingUnderscore: 'allow',
-        },
-        // Function variable naming rules
-        {
-          selector: 'variable',
-          format: ['camelCase', 'PascalCase'],
-          types: ['function'],
-          filter: {
-            regex: '^_|Comp|Provider|Stack|Wrapper|Root', // allowing for 'Component' parameter names
-            match: false,
-          },
-        },
-        // Type naming rules
-        {
-          selector: 'typeLike',
-          format: ['PascalCase'],
-          filter: {
-            regex: '^_|_$',
-            match: false,
-          },
-        },
-        // Boolean naming rules
-        {
-          selector: ['variable', 'property', 'parameter', 'typeProperty'],
-          types: ['boolean'],
-          format: ['UPPER_CASE', 'PascalCase'], // must be PascalCase because prefix is trimmed
-          prefix: booleanNamePrefixes,
-          filter: {
-            regex: booleanNameExceptions,
-            match: false,
-          },
-        },
-      ],
-
-      // TS type safety and preferences
+      // === TYPESCRIPT RULES ===
+      // Type safety & preferences
       '@typescript-eslint/no-explicit-any': ['warn', { fixToUnknown: true }],
       '@typescript-eslint/no-inferrable-types': ['warn', { ignoreParameters: true }],
-      '@typescript-eslint/no-shadow': 'error',
-      '@typescript-eslint/no-unsafe-enum-comparison': 'off',
-      '@typescript-eslint/no-base-to-string': 'off',
       '@typescript-eslint/prefer-nullish-coalescing': [
         'warn',
         { ignorePrimitives: { string: true } },
@@ -308,101 +274,114 @@ const config: Linter.Config[] = [
       '@typescript-eslint/no-unsafe-function-type': 'warn',
       '@typescript-eslint/no-wrapper-object-types': 'warn',
       '@typescript-eslint/array-type': ['warn', { default: 'array' }],
-      '@stylistic/array-element-newline': ['warn', { multiline: true, consistent: true }],
-      '@stylistic/array-bracket-newline': ['warn', 'consistent'],
-      '@stylistic/no-mixed-operators': ['warn', { allowSamePrecedence: true }],
-      '@stylistic/rest-spread-spacing': ['warn', 'never'],
       '@typescript-eslint/no-unnecessary-condition': 'warn',
       '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'warn',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/await-thenable': 'error',
+      '@typescript-eslint/prefer-readonly': 'warn',
+      '@typescript-eslint/no-invalid-void-type': 'error', // Void types are valid in many contexts (e.g., Promise<void>)
+      '@typescript-eslint/no-misused-promises': 'error', // Too many false positives with promise handling
 
-      // TS consistency
+      // TypeScript consistency
       '@typescript-eslint/consistent-indexed-object-style': ['error', 'record'],
-      '@typescript-eslint/consistent-type-assertions': [
-        'error',
-        { assertionStyle: 'as' },
-      ],
+      '@typescript-eslint/consistent-type-assertions': ['error', { assertionStyle: 'as' }],
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
       '@typescript-eslint/consistent-type-exports': 'error',
       '@typescript-eslint/method-signature-style': 'error',
+
+      // TypeScript equivalents of core rules
+      '@typescript-eslint/no-redeclare': 'error',
+      '@typescript-eslint/default-param-last': 'error',
+      '@typescript-eslint/dot-notation': 'error',
+      '@typescript-eslint/no-unused-expressions': [
+        'error',
+        {
+          allowShortCircuit: true,
+          allowTernary: true,
+          allowTaggedTemplates: true,
+        },
+      ],
+      '@typescript-eslint/no-use-before-define': [
+        'error',
+        { variables: true, functions: false },
+      ],
+      '@typescript-eslint/no-shadow': 'error',
+      '@typescript-eslint/no-magic-numbers': [
+        'error',
+        {
+          ignoreEnums: true,
+          ignoreArrayIndexes: true,
+          ignoreDefaultValues: true,
+          ignoreTypeIndexes: true,
+          ignore: [0, 1, -1, 2],
+        },
+      ],
 
       // Expressions and async
       '@typescript-eslint/no-confusing-void-expression': [
         'error',
         { ignoreArrowShorthand: true },
       ],
-      '@typescript-eslint/no-invalid-void-type': 'off',
       '@typescript-eslint/no-meaningless-void-operator': 'error',
-      '@typescript-eslint/no-misused-promises': 'off',
-      '@typescript-eslint/no-var-requires': 'off',
 
-      // TS modern prefs
+      // TypeScript modern preferences
       '@typescript-eslint/prefer-includes': 'error',
       '@typescript-eslint/prefer-optional-chain': 'error',
       '@typescript-eslint/prefer-reduce-type-parameter': 'error',
       '@typescript-eslint/prefer-string-starts-ends-with': 'error',
 
-      // --- Comment Formatting Rules ---
-      'spaced-comment': 'off',
-      '@stylistic/spaced-comment': ['warn', 'always', { line: { markers: ['!', '?', '-', '**'] } }],
-
-      // --- Unused Variables & Imports Rules ---
-      'no-unused-vars': 'off',
-      '@stylistic/no-unused-vars': 'off',
-      'sonarjs/no-unused-vars': 'off',
-      'unused-imports/no-unused-imports': 'error',
-      'unused-imports/no-unused-vars': [
+      // === NAMING CONVENTIONS ===
+      'camelcase': ['warn', { allow: ['^_', 'content_type', 'reply_to'] }],
+      '@typescript-eslint/naming-convention': [
         'warn',
         {
-          vars: 'all',
-          varsIgnorePattern: '^_',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
+          selector: 'property',
+          format: ['camelCase', 'UPPER_CASE'],
+          leadingUnderscore: 'allow',
+          filter: {
+            regex: String.raw`^_|[- /?:{}@%]|Provider|Comp|^item$|^condition$|^container$|^Container$|^\d+$`,
+            match: false,
+          },
+        },
+        {
+          selector: 'variableLike',
+          format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+          trailingUnderscore: 'allow',
+        },
+        {
+          selector: 'variable',
+          format: ['camelCase', 'PascalCase'],
+          types: ['function'],
+          filter: {
+            regex: '^_|Comp|Provider|Stack|Wrapper|Root',
+            match: false,
+          },
+        },
+        {
+          selector: 'typeLike',
+          format: ['PascalCase'],
+          filter: {
+            regex: '^_|_$',
+            match: false,
+          },
+        },
+        {
+          selector: ['variable', 'property', 'parameter', 'typeProperty'],
+          types: ['boolean'],
+          format: ['UPPER_CASE', 'PascalCase'],
+          prefix: booleanNamePrefixes,
+          filter: {
+            regex: booleanNameExceptions,
+            match: false,
+          },
         },
       ],
 
-      // --- Banned API Rules ---
-      'ban/ban': [
-        'warn',
-        {
-          name: ['*', 'concat'],
-          message:
-            'Imperative operation: prefer use ES6 spread, i.e. [...items, newItem]',
-        },
-        {
-          name: ['Object', 'assign'],
-          message: 'Use the spread operator `{...obj}` instead',
-        },
-      ],
-
-      // --- Code Structure Restrictions ---
-      // No loops rule
-      'no-loops/no-loops': 'error',
-
-      // Syntax restrictions
-      'no-restricted-syntax': [
-        'error',
-        {
-          selector: 'SwitchStatement',
-          message:
-            'Switch statements are banned. Use `ts-pattern` instead.',
-        },
-      ],
-
-      // --- ESLint Comments Rules ---
-      '@eslint-community/eslint-comments/require-description': ['error', { ignore: ['eslint-enable'] }],
-
-      // --- Testing Library Rules ---
-      'testing-library/no-render-in-lifecycle': ['error', { allowTestingFrameworkSetupHook: 'beforeEach' }],
-      'testing-library/no-unnecessary-act': 'off',
-
-      // --- Import Rules ---
-      // Commented out rules kept for reference
-      // 'import/no-default-export': 'warn',
-      // 'import/no-restricted-paths': ['warn', { zones: restrictedPaths }], // Define restrictedPaths
-      'import-x/no-named-as-default-member': 'off',
-      'import-x/no-absolute-path': 'warn',
-      'import-x/newline-after-import': ['warn', { count: 1 }],
-      'import-x/no-cycle': ['error', { maxDepth: 1, ignoreExternal: true }],
+      // === IMPORTS & EXPORTS ===
+      // Import path and structure validation:
+      'import-x/no-absolute-path': 'warn', // Prevent absolute paths in imports (should use relative or package imports)
+      'import-x/newline-after-import': ['warn', { count: 1 }], // Require exactly one blank line after imports
+      'import-x/no-cycle': ['error', { maxDepth: 1, ignoreExternal: true }], // Prevent circular dependencies
       'import-x/order': ['warn',
         {
           'groups': [
@@ -417,23 +396,58 @@ const config: Linter.Config[] = [
           'newlines-between': 'never',
         }],
 
-      // --- Sort Rules ---
-      'sort/imports': 'off', // use 'import-x/order' rule instead
-      'sort/object-properties': 'off',
-      'sort/type-properties': 'warn',
-      'sort/string-unions': 'off',
+      // === UNUSED IMPORTS & VARIABLES ===
+      // Automatically remove unused imports:
+      'unused-imports/no-unused-imports': 'error', // Error on unused imports (auto-fixable)
 
-      // --- Unicorn Rules ---
-      'unicorn/prefer-global-this': 'off',
-      'unicorn/prevent-abbreviations': 'off',
-      'unicorn/no-array-reduce': 'off',
-      'unicorn/no-array-for-each': 'off',
-      'unicorn/prefer-top-level-await': 'off',
-      'unicorn/no-array-callback-reference': 'off',
-      'unicorn/prefer-switch': 'off',
-      'unicorn/no-abusive-eslint-disable': 'off',
-      'unicorn/prefer-object-from-entries': 'off',
-      'unicorn/no-null': 'off',
+      // Handle unused variables with underscore convention:
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all', // Check all variables
+          varsIgnorePattern: '^_', // Ignore variables starting with underscore
+          args: 'after-used', // Only check arguments after the last used one
+          argsIgnorePattern: '^_', // Ignore arguments starting with underscore
+        },
+      ],
+
+      // === BANNED APIS ===
+      // Ban imperative array/object operations in favor of modern syntax:
+      'ban/ban': [
+        'warn',
+        {
+          name: ['*', 'concat'],
+          message: 'Array.concat is an imperative operation. Use ES6 spread syntax instead: [...items, newItem]',
+        },
+        {
+          name: ['Object', 'assign'],
+          message: 'Object.assign is imperative. Use the spread operator instead: {...obj}',
+        },
+      ],
+
+      // === CODE STRUCTURE RESTRICTIONS ===
+      // Enforce functional programming patterns:
+      'no-loops/no-loops': 'error', // Ban for/while/do-while loops, use array methods instead
+
+      // Enforce pattern-based conditional logic:
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'SwitchStatement',
+          message: 'Switch statements are banned. Use `ts-pattern` library for pattern matching instead.',
+        },
+      ],
+
+      // === ESLINT COMMENTS ===
+      '@eslint-community/eslint-comments/require-description': ['error', { ignore: ['eslint-enable'] }],
+
+      // === TESTING LIBRARY ===
+      'testing-library/no-render-in-lifecycle': ['error', { allowTestingFrameworkSetupHook: 'beforeEach' }],
+
+      // === SORTING ===
+      'sort/type-properties': 'warn',
+
+      // === UNICORN ===
       'unicorn/filename-case': [
         'warn',
         {
@@ -445,22 +459,8 @@ const config: Linter.Config[] = [
       'unicorn/consistent-destructuring': 'warn',
       'unicorn/no-useless-undefined': ['warn', { checkArguments: false }],
 
-      // --- SonarJS Rules ---
+      // === SONARJS ===
       'sonarjs/no-duplicated-branches': 'warn',
-      'sonarjs/no-duplicate-string': 'off',
-      'sonarjs/deprecation': 'off',
-      'sonarjs/cognitive-complexity': 'off', // use 'complexity' rule instead
-      'sonarjs/no-nested-functions': 'off', // use 'complexity' rule instead
-      'sonarjs/function-return-type': 'off', // use '@typescript-eslint/explicit-module-boundary-types' rule instead
-      'sonarjs/no-redundant-optional': 'off', // use '@typescript-eslint/no-redundant-optional' rule instead
-      'sonarjs/no-commented-code': 'off', // slow rule
-      'sonarjs/todo-tag': 'off', // eventually re-enable
-      'sonarjs/pseudo-random': 'off',
-      'sonarjs/different-types-comparison': 'off', // too many false positives
-      'sonarjs/redundant-type-aliases': 'off',
-      'sonarjs/void-use': 'off', // allow to annotate async functions not explicitly awaited
-      'sonarjs/no-nested-conditional': 'off', // use 'no-nested-ternary' rule instead
-      'sonarjs/no-hardcoded-passwords': 'off',
     },
     settings: {
       'import-x/extensions': ['.js', '.cjs', '.mjs'],

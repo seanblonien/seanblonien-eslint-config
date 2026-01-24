@@ -69,7 +69,7 @@ const config: Linter.Config[] = [
       'react/boolean-prop-naming': ['warn', { rule: booleanNameConvention }],
 
       // Component definition rules
-      'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
+      'react/function-component-definition': ['error', { namedComponents: 'function-declaration', unnamedComponents: 'arrow-function' }],
       'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
       'react/self-closing-comp': 'warn',
 
