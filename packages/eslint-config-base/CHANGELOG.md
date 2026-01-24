@@ -1,3 +1,9 @@
+## @seanblonien/eslint-config-base [1.0.15](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.14...@seanblonien/eslint-config-base@1.0.15) (2026-01-24)
+
+### Bug Fixes
+
+* Disable more functional rules ([cc79ce1](https://github.com/seanblonien/seanblonien-eslint-config/commit/cc79ce1983801045328169d46ce0b22c5b98288a))
+
 ## @seanblonien/eslint-config-base [1.0.14](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.13...@seanblonien/eslint-config-base@1.0.14) (2026-01-24)
 
 ### Bug Fixes
