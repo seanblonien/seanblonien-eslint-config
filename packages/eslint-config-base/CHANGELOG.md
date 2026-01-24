@@ -1,3 +1,9 @@
+## @seanblonien/eslint-config-base [1.0.16](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.15...@seanblonien/eslint-config-base@1.0.16) (2026-01-24)
+
+### Bug Fixes
+
+* Revert sonarjs/deprecation being turned on ([559adbb](https://github.com/seanblonien/seanblonien-eslint-config/commit/559adbb5cb7035279ed3cb52eb66ddfc8899a5ec))
+
 ## @seanblonien/eslint-config-base [1.0.15](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.14...@seanblonien/eslint-config-base@1.0.15) (2026-01-24)
 
 ### Bug Fixes
