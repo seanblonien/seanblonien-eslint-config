@@ -2,6 +2,7 @@
 import baseConfig, { booleanNameConvention } from '@seanblonien/eslint-config-base';
 // @ts-expect-error - no types available
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import checkFilePlugin from 'eslint-plugin-check-file';
 import reactPlugin from 'eslint-plugin-react';
 import reactCompilerPlugin from 'eslint-plugin-react-compiler';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -26,6 +27,9 @@ const config: Linter.Config[] = [
   // React plugin configuration
   {
     files: ['**/*.{tsx,jsx}'],
+    plugins: {
+      'check-file': checkFilePlugin,
+    },
     languageOptions: {
       globals: {
         React: 'readonly',
@@ -46,10 +50,23 @@ const config: Linter.Config[] = [
       '@typescript-eslint/no-magic-numbers': 'off',
       '@typescript-eslint/restrict-template-expressions': 'off',
       '@typescript-eslint/no-use-before-define': 'off',
-      'unicorn/filename-case': [
-        'warn',
+      'unicorn/filename-case': 'off',
+      'check-file/filename-naming-convention': [
+        'error',
         {
-          cases: { pascalCase: true, kebabCase: true },
+          '**/*.tsx': 'KEBAB_CASE',
+        },
+        {
+          ignoreMiddleExtensions: true,
+        },
+      ],
+      'check-file/folder-naming-convention': [
+        'error',
+        {
+          '**/components/**': 'KEBAB_CASE',
+          '**/apps/**': 'KEBAB_CASE',
+          '**/pages/**': 'KEBAB_CASE',
+          '**/src/**': 'KEBAB_CASE',
         },
       ],
       'padding-line-between-statements': [
