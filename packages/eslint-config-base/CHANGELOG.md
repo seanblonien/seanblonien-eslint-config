@@ -1,3 +1,10 @@
+## @seanblonien/eslint-config-base [1.0.17](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.16...@seanblonien/eslint-config-base@1.0.17) (2026-01-25)
+
+### Bug Fixes
+
+* Added eslint-plugin-check-file ([7b343e9](https://github.com/seanblonien/seanblonien-eslint-config/commit/7b343e98b60b167ef084cfeed6f190fc2430e9b9))
+* Remove unneeded comment ([bc5cb1f](https://github.com/seanblonien/seanblonien-eslint-config/commit/bc5cb1fdf29908d6c58dbbb53271221bf878541c))
+
 ## @seanblonien/eslint-config-base [1.0.16](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.15...@seanblonien/eslint-config-base@1.0.16) (2026-01-24)
 
 ### Bug Fixes
