@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers, @typescript-eslint/naming-convention -- config file */
 import eslint from '@eslint/js';
-// @ts-expect-error - no types available
 import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
 import stylistic from '@stylistic/eslint-plugin';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
@@ -43,7 +42,7 @@ const config: Linter.Config[] = [
   importXPlugin.flatConfigs.typescript,
   sortPlugin.configs['flat/recommended'],
   unicornPlugin.configs.recommended,
-  (comments as { recommended: Linter.Config }).recommended,
+  comments.recommended,
   sonarjsPlugin.configs.recommended,
 
   // Functional programming rules
