@@ -1,6 +1,6 @@
 import { ESLint } from 'eslint';
 import { describe, expect, it } from 'vitest';
-import config from './index';
+import { configWithNext, eslintConfigReact } from './index';
 
 // Check if Next.js plugin is available
 let hasNextPlugin = false;
@@ -12,7 +12,7 @@ try {
   // Next.js plugin not installed
 }
 
-const overrideConfig = [
+const withProjectService = (config: ReturnType<typeof eslintConfigReact>) => [
   ...config,
   {
     languageOptions: {
@@ -26,15 +26,23 @@ const overrideConfig = [
 ];
 
 describe('@seanblonien/eslint-config-react', () => {
-  it('should export an array of config objects', () => {
+  it('should be callable with no arguments and return an array of config objects', () => {
+    const config = eslintConfigReact();
     expect(Array.isArray(config)).toBe(true);
     expect(config.length).toBeGreaterThan(0);
+  });
+
+  it('should forward options to the base config', () => {
+    // eslint-disable-next-line @typescript-eslint/naming-convention -- EslintConfigBaseOptions field name
+    const withConsole = eslintConfigReact({ consoleRestriction: true });
+    const mainBlock = withConsole.find((c) => c.rules?.['no-console'] !== undefined);
+    expect(mainBlock?.rules?.['no-console']).toBe('warn');
   });
 
   it('should be a valid ESLint flat config', async () => {
     const eslint = new ESLint({
       overrideConfigFile: true,
-      overrideConfig,
+      overrideConfig: withProjectService(eslintConfigReact()),
     });
 
     const result = await eslint.lintText('const x = 1;\n');
@@ -45,7 +53,7 @@ describe('@seanblonien/eslint-config-react', () => {
   it('should lint React JSX code', async () => {
     const eslint = new ESLint({
       overrideConfigFile: true,
-      overrideConfig,
+      overrideConfig: withProjectService(eslintConfigReact()),
     });
 
     const code = `
@@ -63,7 +71,7 @@ export const Component: React.FC = () => {
   it('should enforce React rules', async () => {
     const eslint = new ESLint({
       overrideConfigFile: true,
-      overrideConfig,
+      overrideConfig: withProjectService(eslintConfigReact()),
     });
 
     // Explicitly break react/jsx-boolean-value rule - boolean props should not have ={true}
@@ -83,14 +91,12 @@ export const Component: React.FC = () => {
 
 describe.skipIf(!hasNextPlugin)('@seanblonien/eslint-config-react - configWithNext', () => {
   it('should export configWithNext as a function returning an array', async () => {
-    const { configWithNext } = await import('./index');
     const nextConfigArray = await configWithNext();
     expect(Array.isArray(nextConfigArray)).toBe(true);
     expect(nextConfigArray.length).toBeGreaterThan(0);
   });
 
   it('should include Next.js plugin configuration', async () => {
-    const { configWithNext } = await import('./index');
     const nextConfigArray = await configWithNext();
     const nextConfig = nextConfigArray.find((c) => c.plugins?.['@next/next']);
     expect(nextConfig).toBeDefined();
@@ -98,7 +104,6 @@ describe.skipIf(!hasNextPlugin)('@seanblonien/eslint-config-react - configWithNe
   });
 
   it('should include Next.js recommended rules', async () => {
-    const { configWithNext } = await import('./index');
     const nextConfigArray = await configWithNext();
     const nextConfig = nextConfigArray.find((c) => c.plugins?.['@next/next']);
     expect(nextConfig?.rules).toBeDefined();
@@ -106,7 +111,6 @@ describe.skipIf(!hasNextPlugin)('@seanblonien/eslint-config-react - configWithNe
   });
 
   it('should be a valid ESLint flat config with Next.js', async () => {
-    const { configWithNext } = await import('./index');
     const eslint = new ESLint({
       overrideConfigFile: true,
       overrideConfig: [

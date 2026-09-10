@@ -3,7 +3,7 @@ import type { Linter } from 'eslint';
 import baseConfig from './packages/eslint-config-base/src/index';
 
 export default [
-  ...baseConfig,
+  ...baseConfig({ camelCase: true, consoleRestriction: true }),
   {
     ignores: [
       '**/node_modules/**',

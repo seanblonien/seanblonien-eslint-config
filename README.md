@@ -42,24 +42,24 @@ npm install -D eslint @seanblonien/eslint-config-react
 
 ### Usage with Custom Rules
 
+Both packages' default exports are factory functions — call them, then spread the result:
+
 ```ts
 // eslint.config.ts
-import reactConfig from '@seanblonien/eslint-config-react';
+import eslintConfigReact from '@seanblonien/eslint-config-react';
 
 export default [
-  ...reactConfig,
-  {
-    rules: {
-      'no-console': 'warn',
-    },
-  },
+  ...eslintConfigReact({ consoleRestriction: true }),
   {
     ignores: ['dist/**', 'build/**'],
   },
 ];
 ```
 
-For more detailed usage examples and configuration options, see the individual package READMEs linked above.
+`consoleRestriction`, `camelCase`, and `booleanNaming` are the built-in options — see
+[eslint-config-base's Configuration Options](./packages/eslint-config-base#configuration-options)
+for what each one does and why most default off. For more detailed usage examples, see the
+individual package READMEs linked above.
 
 ## Contributing
 

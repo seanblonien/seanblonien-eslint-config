@@ -29,14 +29,15 @@ yarn add -D eslint @seanblonien/eslint-config-react @next/eslint-plugin-next # F
 
 ### Standard React Projects
 
-Use the default export for React projects without Next.js:
+The default export is a factory function for React projects without Next.js — call it (with or
+without options) rather than spreading it directly:
 
 ```ts
 // eslint.config.ts
-import reactConfig from '@seanblonien/eslint-config-react';
+import eslintConfigReact from '@seanblonien/eslint-config-react';
 
 export default [
-  ...reactConfig,
+  ...eslintConfigReact(),
   {
     rules: {
       // Override rules as needed
@@ -48,9 +49,23 @@ export default [
 ];
 ```
 
+> **Upgrading from v1?** The default export changed from a static config array to a factory
+> function. Change `...reactConfig` to `...eslintConfigReact()` (or `...reactConfig()` if you kept
+> the old import name).
+
+`eslintConfigReact(options?)` accepts the same `EslintConfigBaseOptions` documented in
+[`@seanblonien/eslint-config-base`](https://github.com/seanblonien/seanblonien-eslint-config/tree/main/packages/eslint-config-base#configuration-options)
+and forwards them to the base config it extends:
+
+```ts
+export default [
+  ...eslintConfigReact({ camelCase: true, consoleRestriction: true }),
+];
+```
+
 ### Next.js Projects
 
-Use the `configWithNext` named export for Next.js projects (includes Next.js recommended rules and Core Web Vitals). This helper is **async**, so your `eslint.config.ts` must support top-level `await` (ESLint 9+ flat config):
+Use the `configWithNext` named export for Next.js projects (includes Next.js recommended rules and Core Web Vitals). This helper is **async** and also accepts `EslintConfigBaseOptions`, so your `eslint.config.ts` must support top-level `await` (ESLint 9+ flat config):
 
 ```ts
 // eslint.config.ts
