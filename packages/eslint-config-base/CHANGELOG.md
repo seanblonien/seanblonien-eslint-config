@@ -1,3 +1,20 @@
+## @seanblonien/eslint-config-base [1.1.0](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.17...@seanblonien/eslint-config-base@1.1.0) (2026-09-10)
+
+### ⚠ BREAKING CHANGES
+
+* the default export of both `@seanblonien/eslint-config-base`
+and `@seanblonien/eslint-config-react` changed from a static flat-config array
+to a factory function. Consumers spreading it directly (`...baseConfig`,
+`...reactConfig`) must call it instead (`...eslintConfigBase()`,
+`...eslintConfigReact()`), optionally passing options to restore the previous
+stricter behavior (`{ camelCase: true, consoleRestriction: true }`).
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
+### Features
+
+* make naming-convention/camelcase and no-console opt-in via config options ([ba597ac](https://github.com/seanblonien/seanblonien-eslint-config/commit/ba597ac1c02c989564ec7c8bebe9e47b3ebe8058))
+
 ## @seanblonien/eslint-config-base [1.0.17](https://github.com/seanblonien/seanblonien-eslint-config/compare/@seanblonien/eslint-config-base@1.0.16...@seanblonien/eslint-config-base@1.0.17) (2026-01-25)
 
 ### Bug Fixes
